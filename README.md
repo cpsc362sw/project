@@ -34,4 +34,5 @@ SHE SAID
  * make predefined training courses that we can have checked off per user
  * every 6 months they take online training, have record of who did and didn't
  * App with video where it asks if you completed it
-* payroll report 
+* payroll report
+* Permission roles
