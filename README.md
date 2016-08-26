@@ -24,7 +24,7 @@
   
 * Login/Logout
 
-SHE SAID
+##SHE SAID
 * keep track of hours they worked 
 * how many sick/vacation hours
 * clock-in clock-out lunch-in lunch-out  
