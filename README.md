@@ -1,4 +1,5 @@
 # Project HR Dashboard
+__'HRbii, a software that aids you'__
 
 * Landing Page w/ a navbar (dashboard)
   * General information?
