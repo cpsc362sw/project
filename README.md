@@ -37,3 +37,29 @@ __'HRbii, a software that aids you'__
  * App with video where it asks if you completed it
 * payroll report
 * Permission roles
+
+
+# Notes for first Sprint Oct 11th
+* First we must assume that there will be an administrative account already registered by the database, so the administrator can enter new employs using an employee number, name, email, which will send an email out for a user to register an account.
+
+as a user i want to so that
+
+1. Create administrator account
+	- ability to login for administrator
+	- middleware will protect the differing levels behind a middleware defined below
+		- auth.admin - will route to correct dashboard  (/employees/)
+		- auth.employee - will route to correct employee dashboard (/admin/)
+
+2. administrator
+	- after logging in it will get routed to the administrative landing page.
+	- navbar will exist with at least one  button for managing users.
+		- should have a list of users
+			- delete functionaity
+			- edit functionality
+			- add functionality
+
+3. user registration
+	- sends out email link to user
+	- user follows email link to registration page, which will prompt to set username / password
+		- verified using a token which will match otherwise it will reject
+	- after registering and verifying it will redirect to a dashboard welcoming
