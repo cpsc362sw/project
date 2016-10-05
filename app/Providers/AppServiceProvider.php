@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Providers;
+namespace hrbii\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

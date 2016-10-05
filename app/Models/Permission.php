@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace hrbii;
 
 use Illuminate\Database\Eloquent\Model;
 
