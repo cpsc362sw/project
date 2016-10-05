@@ -1,6 +1,14 @@
 # Project HR Dashboard
 __'HRbii, a software that aids you'__
 
+# File Structure Layout
+Main scss/js files  /resources/assets/
+Main views          /resources/views/
+Routing             /routes/web.php
+Controllers         /app/Http/Controllers/
+Models              /app/Models/
+
+
 * Landing Page w/ a navbar (dashboard)
   * General information?
 <br>
