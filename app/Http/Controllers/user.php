@@ -1,10 +1,10 @@
 <?php
 
-namespace hrbii\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use hrbii\Http\Requests;
+use App\Http\Requests;
 
 class user extends Controller
 {

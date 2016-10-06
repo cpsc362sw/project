@@ -1,5 +1,5 @@
 # Project HR Dashboard
-__'HRbii, a software that aids you'__
+__'app, a software that aids you'__
 
 # File Structure Layout
 Main scss/js files  /resources/assets/

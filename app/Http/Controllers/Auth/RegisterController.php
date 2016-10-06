@@ -1,10 +1,10 @@
 <?php
 
-namespace hrbii\Http\Controllers\Auth;
+namespace App\Http\Controllers\Auth;
 
-use hrbii\User;
+use App\User;
 use Validator;
-use hrbii\Http\Controllers\Controller;
+use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
