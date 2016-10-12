@@ -31,21 +31,61 @@ class User extends Authenticatable
     /**
      * Return the role attached to a user.
      *
+     * Available:
+     *  ->id
+     *  ->name
+     *  ->display_name
+     *  ->description
+     *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function roles() {
-        return $this->hasOne('Role', 'id', 'role_id');
+        return $this->hasOne('App\Role', 'id', 'role_id');
     }
 
-    public function get() {
-        return $this;
+    /**
+     * Access and return our permission objects.
+     *
+     * Available:
+     *  ->id
+     *  ->name
+     *  ->display_name
+     *  ->description
+     *
+     * @return mixed
+     */
+    public function getPermissions() {
+        return $this->roles->permissions;
     }
 
+    /**
+     * Returns an array of the permission names
+     *
+     * @return array
+     */
+    public function getRoleTitles() {
+        foreach ($this->getPermissions() as $permission) {
+            $permissions[] = $permission->name;
+        }
+
+        return $permissions;
+    }
+
+    /**
+     * Simple integer challenge to see if user is admin. (role 1)
+     *
+     * @return bool
+     */
     public function isAdmin() {
         return ($this->role_id == 1);
     }
 
-    public function getPrettyRole() {
-        $this->role_id;
+    /**
+     * Returns our display_name
+     *
+     * @return mixed
+     */
+    public function getRoleName() {
+        return $this->roles->name;
     }
 }

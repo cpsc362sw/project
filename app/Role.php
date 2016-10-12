@@ -20,10 +20,10 @@ class Role extends Model
      * @return mixed
      */
     public function permissions() {
-        return $this->belongsToMany('Permissions', 'roles_permissions', 'role_id', 'permission_id');
+        return $this->belongsToMany('App\Permission', 'role__permissions', 'role_id', 'permission_id');
     }
 
     public function user() {
-        return $this->belongsTo('User', 'id', 'id');
+        return $this->belongsTo('App\User', 'id', 'id');
     }
 }
