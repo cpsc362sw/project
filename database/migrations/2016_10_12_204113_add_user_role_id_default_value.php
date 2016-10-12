@@ -14,7 +14,7 @@ class AddUserRoleIdDefaultValue extends Migration
     public function up()
     {
         Schema::table('users', function ($table) {
-            $table->integer('role_id')->default(2)->change();
+            $table->integer('role_id')->default(3)->change();
         });
     }
 
