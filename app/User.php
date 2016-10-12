@@ -6,6 +6,24 @@ use App\Role;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * Quick Reference:
+ *
+ * functions:
+
+ * roles()
+ * getRoleTitle()
+ *
+ * getPermissions()
+ * getPermissionTitles()
+ *
+ * hasPermission()
+ *
+ * isAdmin()
+ * isManager()
+ * isUser()
+ *
+ */
 class User extends Authenticatable
 {
     use Notifiable;
@@ -44,6 +62,15 @@ class User extends Authenticatable
     }
 
     /**
+     * Returns our display_name
+     *
+     * @return mixed
+     */
+    public function getRoleTitle() {
+        return $this->roles->name;
+    }
+
+    /**
      * Access and return our permission objects.
      *
      * Available:
@@ -63,7 +90,7 @@ class User extends Authenticatable
      *
      * @return array
      */
-    public function getRoleTitles() {
+    public function getPermissionTitles() {
         foreach ($this->getPermissions() as $permission) {
             $permissions[] = $permission->name;
         }
@@ -72,20 +99,47 @@ class User extends Authenticatable
     }
 
     /**
-     * Simple integer challenge to see if user is admin. (role 1)
+     * returns true if $challenge (the item to be checked)
+     * exists in the users array of permissions.
+     *
+     * NOTE: this is mostly for future developments
+     * if we add more permissions.
+     *
+     * @param string $challenge
+     * @return bool
+     */
+    public function hasPermission($challenge) {
+        if ($this->isAdmin()) {
+            return true;
+        }
+
+        return (in_array($challenge, $this->getPermissionTitles()));
+    }
+
+    /**
+     * Wrapper to see if a user is an admin.
      *
      * @return bool
      */
     public function isAdmin() {
-        return ($this->role_id == 1);
+        return ($this->roles->name == 'admin');
     }
 
     /**
-     * Returns our display_name
+     * Wrapper to see if a user is a manager.
      *
-     * @return mixed
+     * @return bool
      */
-    public function getRoleName() {
-        return $this->roles->name;
+    public function isManager() {
+        return ($this->roles->name == 'manager');
     }
+
+    /**
+     * Wrapper to see if a user is a general user.
+     *
+     * @return bool
+     */
+    public function isUser() {
+         return ($this->roles->name == 'user');
+     }
 }
