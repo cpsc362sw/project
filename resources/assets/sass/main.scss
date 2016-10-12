@@ -1,1 +1,20 @@
-// main scss 
+// main scss
+.separator { border-bottom: 1px solid black; margin: 5px 0; }
+.navbar-default { background-color: #31708f; border-color: #3097d1; }
+.navbar-default .navbar-brand { color: white; }
+.navbar-default .navbar-brand:hover { color: skyblue; }
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-text {
+  color: white;
+}
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-text:hover {
+  color: skyblue;
+}
+
+.form-block { margin: 10px 15px; }
+
+.btn:hover { background: #cbe8f5; }
+
+.edit:hover { background: darkgrey; color: white; }
+
+.delete { background: #ffbaba; color: #636b6f; }
+.delete:hover { background: #de5151; color: white;  }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+
+        if ($user->isAdmin()) {
+            return redirect('admin');
+        }
+        $last_login = $user['updated_at']->toDateTimeString();
+
+        return view('home')
+            ->with('username', $user->name)
+            ->with('last_login', $last_login)
+            ->with('email', $user->email);
     }
 }

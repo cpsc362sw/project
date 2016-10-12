@@ -2,12 +2,16 @@
 
 namespace App;
 
+use App\Role_Permission;
+use App\Permission;
+use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
 {
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
+    public static $roles = ['admin' => 1, 'user' => 2];
     /**
      * Get all permissions
      *
