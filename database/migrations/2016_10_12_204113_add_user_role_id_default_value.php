@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddUserRoleColumn extends Migration
+class AddUserRoleIdDefaultValue extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddUserRoleColumn extends Migration
     public function up()
     {
         Schema::table('users', function ($table) {
-            $table->integer('role_id')->after('email');
+            $table->integer('role_id')->after('email')->default(2);
         });
     }
 
