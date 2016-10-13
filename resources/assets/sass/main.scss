@@ -1,6 +1,8 @@
 /**
  NOTE: Use & when nesting elements, it will always refer to the parent.
        Important for when we have multiple selectors we are applying styles to.
+
+ NOTE: http://fontawesome.io/icons/
 */
 
 // navbar
@@ -22,9 +24,26 @@
 
 // buttons
 .btn:hover { background: #cbe8f5; }
-.edit:hover { background: darkgrey; color: white; }
-.delete { background: #ffbaba; color: #636b6f; }
-.delete:hover { background: #de5151; color: white;  }
+
+.edit {
+  padding: 3px;
+  width: 70px;
+  &:hover {
+    background: darkgrey;
+    color: white;
+  }
+}
+.delete {
+  background: #ffbaba;
+  color: #636b6f;
+  padding: 3px;
+  width: 70px;
+  &:hover {
+    background: #de5151;
+    color: white;
+  }
+}
+
 
 // admin dashboard tiles
 .user, .timeclock, .calendar, .payroll {
@@ -39,22 +58,25 @@
 
   &:hover { background: #233988; animation: wobble 0.5s; }
 
-  &label {
+  label {
     position: relative;
     font-size: 250%;
     margin: 20% 0;
     cursor: hand !important;
     cursor: pointer !important;
 
-    &i {
+    i {
       display: block;
       font-size: 200%;
     }
   }
 }
 
+// table
+.table > tbody > tr > td { font-size: 16px; padding: 5px; line-height: 2.3em; }
 
-
+// fontawesome overrides
+.fa-angle-right { font-size: 15px; font-weight: 700; margin: 0 1%;  }
 
 // animations
 @-webkit-keyframes wobble  {

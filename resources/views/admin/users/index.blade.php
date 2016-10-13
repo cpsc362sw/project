@@ -5,21 +5,20 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b>Administrative</b> Dashboard</div>
+                    <div class="panel-heading"><b>Administrative</b> Dashboard <i class="fa fa-angle-right" aria-hidden="true"></i> Users</div>
 
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
                     @endif
-                    <label>Users:</label>
-                    <table class="table table-striped">
+                    <table class="table table-striped table-hover">
                         <thead class="thead-default">
                             <tr>
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
-                                <th></th>
+                                <th width="160"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -28,15 +27,16 @@
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->getRoleTitle() }}</td>
-                                    <td></td>
-                                </tr>
-                            <form method="post" action="{{ url('admin/edit/'.$user->id) }}">
-                                {{ csrf_field() }}
-                                <input type="hidden" name="user_id" value="{{ $user->id }}">
+                                    <td>
+                                        <form class="actions hide" method="post" action="{{ url('admin/edit/'.$user->id) }}">
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="user_id" value="{{ $user->id }}">
 
-                                <button type="submit" class="btn edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
-                                <a href="{{ url('/admin/delete/'.$user->id) }}" class="btn delete"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
-                            </form>
+                                            <button type="submit" class="btn edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
+                                            <a href="{{ url('/admin/delete/'.$user->id) }}" class="btn delete"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
+                                        </form>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
