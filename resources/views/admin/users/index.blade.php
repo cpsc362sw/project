@@ -28,7 +28,7 @@
                                     <td>{{ $user->email }}</td>
                                     <td>{{ $user->getRoleTitle() }}</td>
                                     <td>
-                                        <form class="actions hide" method="post" action="{{ url('admin/edit/'.$user->id) }}">
+                                        <form class="actions hide" method="post" action="{{ url('admin/users/edit/'.$user->id) }}">
                                             {{ csrf_field() }}
                                             <input type="hidden" name="user_id" value="{{ $user->id }}">
 
