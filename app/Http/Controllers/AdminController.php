@@ -35,9 +35,16 @@ class AdminController extends Controller
         $user = Auth::user();
         $users = User::all();
 
-        return view('admin.user')
+        return view('admin.users.index')
             ->with('user', $user)
             ->with('users', $users);
+    }
+
+    public function getEditUser($id) {
+        $user = User::where('id', '=', $id)->first();
+
+        return view('admin.users.edit')
+            ->with('user', $user);
     }
 
     /**
@@ -45,7 +52,7 @@ class AdminController extends Controller
      * @param $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postUser(Request $request, $id) {
+    public function postEditUser(Request $request, $id) {
         $user = User::where("id", "=", $id)->first();
 
         $user->name = $request->name;
