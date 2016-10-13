@@ -36,7 +36,11 @@ Route::group(['middleware' => ['auth']], function() {
 
         Route::get('/users/edit/{id}', [
             'as' => 'postuser',
-            'uses' => 'AdminController@postUser'
+            'uses' => 'AdminController@getEditUser'
+        ]);
+        Route::post('/users/edit/{id}', [
+            'as' => 'postuser',
+            'uses' => 'AdminController@postEditUser'
         ]);
 
         # calendar landing page
