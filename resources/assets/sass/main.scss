@@ -1,4 +1,9 @@
-// main scss
+/**
+ NOTE: Use & when nesting elements, it will always refer to the parent.
+       Important for when we have multiple selectors we are applying styles to.
+*/
+
+// navbar
 .separator { border-bottom: 1px solid black; margin: 5px 0; }
 .navbar-default {
   background-color: #31708f; border-color: #3097d1;
@@ -10,16 +15,18 @@
 
 }
 
+
+//  forms
 .form-block { margin: 10px 15px; }
 
+
+// buttons
 .btn:hover { background: #cbe8f5; }
-
 .edit:hover { background: darkgrey; color: white; }
-
 .delete { background: #ffbaba; color: #636b6f; }
 .delete:hover { background: #de5151; color: white;  }
 
-// tiles
+// admin dashboard tiles
 .user, .timeclock, .calendar, .payroll {
   background: #26328A;
   height: 250px;
@@ -45,6 +52,8 @@
     }
   }
 }
+
+
 
 
 // animations
