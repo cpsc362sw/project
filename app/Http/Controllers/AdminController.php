@@ -26,13 +26,18 @@ class AdminController extends Controller
      */
     public function index() {
         $user = Auth::user();
-        $users = User::all();
-        $roles = ["admin", "user"];
 
-        return view('admin')
-            ->with('username', $user->name)
-            ->with('users', $users)
-            ->with('roles', $roles);
+        return view('admin.index')
+            ->with('user', $user);
+    }
+
+    public function getUsers() {
+        $user = Auth::user();
+        $users = User::all();
+
+        return view('admin.user')
+            ->with('user', $user)
+            ->with('users', $users);
     }
 
     /**

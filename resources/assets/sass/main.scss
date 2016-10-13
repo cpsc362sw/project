@@ -3,12 +3,8 @@
 .navbar-default { background-color: #31708f; border-color: #3097d1; }
 .navbar-default .navbar-brand { color: white; }
 .navbar-default .navbar-brand:hover { color: skyblue; }
-.navbar-default .navbar-nav>li>a, .navbar-default .navbar-text {
-  color: white;
-}
-.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-text:hover {
-  color: skyblue;
-}
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-text { color: white; }
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-text:hover { color: skyblue; }
 
 .form-block { margin: 10px 15px; }
 
@@ -18,3 +14,17 @@
 
 .delete { background: #ffbaba; color: #636b6f; }
 .delete:hover { background: #de5151; color: white;  }
+
+// tiles
+.user, .timeclock, .calendar, .payroll { height: 250px; border: 5px solid white; }
+
+.user { background: #26328A; }
+.timeclock { background: #26328A; }
+.payroll { background: #26328A; }
+.calendar { background: #26328A; }
+
+.user:hover { background: #233988; }
+.timeclock:hover { background: #233988; }
+.payroll:hover { background: #233988; }
+.calendar:hover { background: #233988; }
+
