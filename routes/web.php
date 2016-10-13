@@ -22,13 +22,17 @@ Route::group(['middleware' => ['auth']], function() {
         'as' => 'home',
         'uses' => 'HomeController@index',
     ]);
-    Route::get('/admin', [
-        'as' => 'admin',
-        'uses' => 'AdminController@index'
-    ]);
-    Route::post('/admin/edit/{id}', [
-        'as' => 'postuser',
-        'uses' => 'AdminController@postUser'
-    ]);
+    Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
+        Route::get('/', [
+            'as' => 'admin',
+            'uses' => 'AdminController@index'
+        ]);
+        Route::get('/users/edit/{id}', [
+            'as' => 'postuser',
+            'uses' => 'AdminController@postUser'
+        ]);
+
+    });
+
 });
 
