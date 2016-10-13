@@ -15,30 +15,25 @@
 
                     <div class="panel-body">
                         <label>User Edit:</label>
-                        @foreach($users as $user)
-                        <form method="post" action="{{ url('admin/edit/'.$user->id) }}">
+                        <form method="post" action="{{ url('admin/edit/') }}">
                             {{ csrf_field() }}
-                            <input type="hidden" name="user_id" value="{{ $user->id }}">
+                            <input type="hidden" name="user_id" value="">
                             <div class="form-group separator">
                                 <label class="form-block">User:
-                                    <input class="form-control" name="name" value="{{ $user->name }}">
+                                    <input class="form-control" name="name" value="">
                                 </label>
                                 <label class="form-block">Email:
-                                    <input class="form-control" name="email" value="{{ $user->email }}">
+                                    <input class="form-control" name="email" value="">
                                 </label>
                                 <label class="form-block">
                                     Role:
                                     <select name="role" class="form-control">
-                                        @foreach($roles as $role)
-                                            <option value="{{ $role }}">{{ $role }}</option>
-                                        @endforeach
                                     </select>
                                 </label>
                                 <button type="submit" class="btn edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
-                                <a href="{{ url('/admin/delete/'.$user->id) }}" class="btn delete"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
+                                <a href="{{ url('/admin/delete/') }}" class="btn delete"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
                             </div>
                         </form>
-                        @endforeach
                     </div>
                 </div>
             </div>
