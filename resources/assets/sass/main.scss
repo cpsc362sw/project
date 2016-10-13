@@ -32,14 +32,14 @@
 
   &:hover { background: #233988; animation: wobble 0.5s; }
 
-  label {
+  &label {
     position: relative;
     font-size: 250%;
     margin: 20% 0;
     cursor: hand !important;
     cursor: pointer !important;
 
-    i {
+    &i {
       display: block;
       font-size: 200%;
     }
@@ -50,7 +50,7 @@
 // animations
 @-webkit-keyframes wobble  {
   0%  { -webkit-transform:  rotate(0deg); }
-  20%  { -webkit-transform:  rotate(2deg); }
-  50%  { -webkit-transform:  rotate(-2deg); }
+  20%  { -webkit-transform:  rotate(1deg); }
+  50%  { -webkit-transform:  rotate(-1deg); }
   100%  { -webkit-transform:  rotate(0deg); }
 }
