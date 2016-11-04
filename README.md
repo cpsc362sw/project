@@ -2,7 +2,7 @@
 __'app, a software that aids you'__
 
 # File Structure Layout
-* Main scss/js files  /resources/assets/
+* Main styling and javascript  /resources/assets/
     * Styling for our views
     
 * Main views          /resources/views/
