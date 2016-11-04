@@ -53,9 +53,13 @@ Route::group(['middleware' => ['auth']], function() {
         # timeclock landing page
 
         # payroll landing page
-
-
     });
 
+    Route::group(['prefix' => 'user', 'middleware' => 'user'], function() {
+        Route::get('/', [
+            'as' => 'user',
+            'uses' => 'UserController@index'
+        ]);
+    });
 });
 
