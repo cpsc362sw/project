@@ -2,11 +2,23 @@
 __'app, a software that aids you'__
 
 # File Structure Layout
-Main scss/js files  /resources/assets/
-Main views          /resources/views/
-Routing             /routes/web.php
-Controllers         /app/Http/Controllers/
-Models              /app/Models/
+* Main scss/js files  /resources/assets/
+    * Styling for our views
+    
+* Main views          /resources/views/
+    * Our physical HTML pages that we 'see'
+    
+* Routing             /routes/web.php
+    * This tells the application where to send our url requests
+    
+* Controllers         /app/Http/Controllers/
+    * This handles whatever class and function we call in the routing.
+    
+* Models              /app/Models/
+    * This does most of our functionality related to the database.
+    * Each database tabel has a Model that accesses the data.
+
+
 
 
 * Landing Page w/ a navbar (dashboard)
