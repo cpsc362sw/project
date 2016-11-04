@@ -22,6 +22,8 @@ Route::group(['middleware' => ['auth']], function() {
         'as' => 'home',
         'uses' => 'HomeController@index',
     ]);
+
+    //  /admin    group
     Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function() {
         # dashboard landing page
         Route::get('/', [
@@ -44,7 +46,10 @@ Route::group(['middleware' => ['auth']], function() {
         ]);
 
         # calendar landing page
-
+        Route::get('/calendar', [
+            'as' => 'admin.calendar',
+            'uses' => 'AdminController@getCalendar'
+        ]);
         # timeclock landing page
 
         # payroll landing page

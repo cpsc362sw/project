@@ -66,4 +66,9 @@ class AdminController extends Controller
 
         return redirect('admin')->with('status', 'User updated!');
     }
+
+    public function getCalendar() {
+
+        return view('admin.calendar.index');
+    }
 }
