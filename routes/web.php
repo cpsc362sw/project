@@ -51,8 +51,16 @@ Route::group(['middleware' => ['auth']], function() {
             'uses' => 'AdminController@getCalendar'
         ]);
         # timeclock landing page
+        Route::get('/timeclock', [
+            'as'=> 'admin.timeclock',
+            'uses' => 'AdminController@getTimeClock'
+        ]);
 
         # payroll landing page
+        Route::get('/payroll', [
+            'as'=> 'admin.payroll',
+            'uses'=> 'AdminController@getPayroll'
+        ]);
     });
 
     Route::group(['prefix' => 'user', 'middleware' => 'user'], function() {
