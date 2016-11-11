@@ -28,14 +28,12 @@ class HomeController extends Controller
             return redirect('admin');
         }
 
-        $last_login = $user['updated_at']->toDateTimeString();
+        else if ($user->isUser()) {
+            return redirect('user');
+        }
 
-        // return redirect('user'); // Why can't I just do this? redirect('admin') above work, doesn't pass $user
-        // even including '->with' etc. won't function
-
-        return view('user.index')
-            ->with('user', $user)
-            ->with('username', $user->name)
-            ->with('last_login', $last_login);
+        else {
+            return view('welcome');
+        }
     }
 }
