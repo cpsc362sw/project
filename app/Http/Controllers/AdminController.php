@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use Form;
 
 use App\Http\Requests;
 
@@ -43,8 +44,10 @@ class AdminController extends Controller
     public function getEditUser($id) {
         $user = User::where('id', '=', $id)->first();
 
+        $role = Role::all()->pluck('name','id');
         return view('admin.users.edit')
-            ->with('user', $user);
+            ->with('user', $user)
+            ->with('role', $role);
     }
 
     /**
@@ -57,14 +60,24 @@ class AdminController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
-
-        if($role_id = Role::$roles[$request->role]) {
-            $user->role_id = $role_id;
-        }
+        $user->role_id = $role_id;
 
         $user->save();
 
         return redirect('admin')->with('status', 'User updated!');
+    }
+
+    public function getDeleteUser($id) {
+        $user = User::where('id', '=', $id)->first();
+
+        return view('admin.users.delete')
+            ->with('user', $user);
+    }
+
+    public function postDeleteUser($id) {
+        $user = User::where('id', '=', $id)->first();
+
+        return redirect('admin')->with('status', 'User deleted!');
     }
 
     public function getCalendar() {
