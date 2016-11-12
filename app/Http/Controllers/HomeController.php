@@ -26,13 +26,11 @@ class HomeController extends Controller
 
         if ($user->isAdmin()) {
             return redirect('admin');
-        }
-
-        else if ($user->isUser()) {
+        } else if ($user->isUser()) {
             return redirect('user');
-        }
-
-        else {
+        } else if ($user->isManager()) {
+            return redirect('manager');
+        } else {
             return view('welcome');
         }
     }
