@@ -33,7 +33,7 @@
                                             <input type="hidden" name="user_id" value="{{ $user->id }}">
 
                                             <button type="submit" class="btn edit"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button>
-                                            <a href="{{ url('/admin/delete/'.$user->id) }}" class="btn delete"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
+                                            <a href="{{ url('/admin/users/delete/'.$user->id) }}" class="btn delete"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
                                         </form>
                                     </td>
                                 </tr>
