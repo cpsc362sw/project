@@ -78,8 +78,29 @@ class AdminController extends Controller
     }
     
     public function postTimeClock() {
-    
-    	return view('admin.timeclock.index');
+    	# retrieves and stores the action value from the post data
+    	$action = ($_POST['action']);
+    	
+    	# retrieves the current time with the format YYYY-MM-DD HH:MM:SS in 24 hour format
+    	$time_stamp = date("Y-m-d H:i:s");
+    	
+    	# retrieves and stores user id
+    	$id = Auth::user()->id;
+    	
+    	# checks to see if any values are empty
+    	if(empty($time_stamp) || empty($action) || empty($id)) {
+    		Redirect::back()->withErrors(['msg', 'Missing values']);
+    	} 	
+    	
+    	# NEED TO IMPLEMENT AFTER CLASSES HAVE BEEN MADE: saving to database
+    	
+    	# $timeclock = new Timeclock();
+    	# $timeclock->id = $id;
+    	# $timeclock->action = $action;
+    	# $timeclock->time_stamp = $time_stamp;
+    	# $timeclock->save();
+    	
+    	return view('admin.timeclock.index')->withSuccess("Time clocked successfully!");
     }
     
     public function getPayroll() {
