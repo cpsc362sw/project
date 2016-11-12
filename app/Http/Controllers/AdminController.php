@@ -67,6 +67,19 @@ class AdminController extends Controller
         return redirect('admin')->with('status', 'User updated!');
     }
 
+    public function getDeleteUser($id) {
+        $user = User::where('id', '=', $id)->first();
+
+        return view('admin.users.delete')
+            ->with('user', $user);
+    }
+
+    public function postDeleteUser($id) {
+        $user = User::where('id', '=', $id)->first();
+
+        return redirect('admin')->with('status', 'User deleted!');
+    }
+
     public function getCalendar() {
 
         return view('admin.calendar.index');
