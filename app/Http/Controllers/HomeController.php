@@ -24,13 +24,11 @@ class HomeController extends Controller
     public function index() {
         $user = Auth::user();
 
-        if ($user->isAdmin()) {
+        if ($user->isAdmin() || $user->isManager()) {
             return redirect('admin');
         } else if ($user->isUser()) {
             return redirect('user');
-        } else if ($user->isManager()) {
-            return redirect('manager');
-        } else {
+        }  else {
             return view('welcome');
         }
     }
