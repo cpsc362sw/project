@@ -76,7 +76,12 @@ class AdminController extends Controller
 
         return view('admin.timeclock.index');
     }
-
+    
+    public function postTimeClock() {
+    
+    	return view('admin.timeclock.index');
+    }
+    
     public function getPayroll() {
 
         return view('admin.payroll.index');
