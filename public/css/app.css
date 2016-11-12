@@ -7976,6 +7976,27 @@ button.close {
   .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-text:hover {
     color: skyblue; }
 
+.footer {
+  color: white;
+  position: fixed;
+  bottom: 0;
+  background-color: #31708f;
+  border-color: #3097d1;
+  height: 50px;
+  width: 100%; }
+  .footer #copyright {
+    margin-top: 15px;
+    margin-left: 5%;
+    float: left; }
+    .footer #copyright a {
+      color: white; }
+  .footer #tandc {
+    margin-top: 15px;
+    margin-right: 5%;
+    float: right; }
+    .footer #tandc a {
+      color: white; }
+
 .form-block {
   margin: 10px 15px; }
 
@@ -8062,6 +8083,27 @@ button.close {
     color: white; }
   .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-text:hover {
     color: skyblue; }
+
+.footer {
+  color: white;
+  position: fixed;
+  bottom: 0;
+  background-color: #31708f;
+  border-color: #3097d1;
+  height: 50px;
+  width: 100%; }
+  .footer #copyright {
+    margin-top: 15px;
+    margin-left: 5%;
+    float: left; }
+    .footer #copyright a {
+      color: white; }
+  .footer #tandc {
+    margin-top: 15px;
+    margin-right: 5%;
+    float: right; }
+    .footer #tandc a {
+      color: white; }
 
 .form-block {
   margin: 10px 15px; }
