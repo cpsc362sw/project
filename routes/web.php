@@ -14,6 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/terms', function () {
+    return view('terms');
+});
+Route::get('/copyright', function () {
+    return view('copyright');
+});
+Route::get('/privacy', function () {
+    return view('privacy');
+});
+
 
 Auth::routes();
 
