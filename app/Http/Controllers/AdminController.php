@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use Form;
 
 use App\Http\Requests;
 
@@ -43,8 +44,10 @@ class AdminController extends Controller
     public function getEditUser($id) {
         $user = User::where('id', '=', $id)->first();
 
+        $role = Role::all()->pluck('name','id');
         return view('admin.users.edit')
-            ->with('user', $user);
+            ->with('user', $user)
+            ->with('role', $role);
     }
 
     /**
@@ -57,10 +60,7 @@ class AdminController extends Controller
 
         $user->name = $request->name;
         $user->email = $request->email;
-
-        if($role_id = Role::$roles[$request->role]) {
-            $user->role_id = $role_id;
-        }
+        $user->role_id = $role_id;
 
         $user->save();
 
