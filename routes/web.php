@@ -14,6 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/terms', function () {
+    return view('terms');
+});
+Route::get('/copyright', function () {
+    return view('copyright');
+});
+Route::get('/privacy', function () {
+    return view('privacy');
+});
+
 
 Auth::routes();
 
@@ -66,9 +76,9 @@ Route::group(['middleware' => ['auth']], function() {
         ]);
 
         # payroll landing page
-        Route::get('/payroll', [
-            'as'=> 'admin.payroll',
-            'uses'=> 'AdminController@getPayroll'
+        Route::get('/reports', [
+            'as'=> 'admin.reports',
+            'uses'=> 'AdminController@getReports'
         ]);
     });
 
