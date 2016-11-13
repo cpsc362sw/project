@@ -43,8 +43,8 @@ class AdminController extends Controller
 
     public function getEditUser($id) {
         $user = User::where('id', '=', $id)->first();
-
         $role = Role::all()->pluck('name','id');
+
         return view('admin.users.edit')
             ->with('user', $user)
             ->with('role', $role);
@@ -56,15 +56,23 @@ class AdminController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     public function postEditUser(Request $request, $id) {
+        $active_user = Auth::user();
         $user = User::where("id", "=", $id)->first();
 
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->role_id = $role_id;
+        // Prevent admins from manipulating their role
+        if ($user->id == $active_user->id &&
+            $request->role_id != $active_user->role_id) {
+            return redirect('admin')
+                ->with('status', 'No changes made. You may not edit your role!');
+        } else {
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->role_id = $request->role_id;
+            $user->save();
 
-        $user->save();
-
-        return redirect('admin')->with('status', 'User updated!');
+            return redirect('admin')
+                ->with('status', 'User updated!');
+        }
     }
 
     public function getDeleteUser($id) {
@@ -77,7 +85,8 @@ class AdminController extends Controller
     public function postDeleteUser($id) {
         $user = User::where('id', '=', $id)->first();
 
-        return redirect('admin')->with('status', 'User deleted!');
+        return redirect('admin')
+            ->with('status', 'User deleted!');
     }
 
     public function getCalendar() {

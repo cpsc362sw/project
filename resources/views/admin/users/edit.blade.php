@@ -10,18 +10,18 @@
                         <i class="fa fa-angle-right" aria-hidden="true"></i> Edit
                         <br />
                         <table class="table table-striped table-hover">
-                            <form method="get" action="{{ url('admin/users/') }}">
+                            <form method="post" action="">
                                 <input type="text" name="name" value="{{ $user->name }}" />
-                                <input type="text" name="email" value="{{ $user->email }}" />
-                                <select name="role">
-                                    @foreach($role as $id => $rolename)
-                                        <option value="{{ $id }}">{{ ucfirst($rolename) }}</option>
-                                        @endforeach
+                                <input type="email" name="email" value="{{ $user->email }}" />
+                                <select name="role_id">
+                                    @foreach($role as $role_id => $role_name)
+                                        <option value="{{ $role_id }}">{{ ucfirst($role_name) }}</option>
+                                    @endforeach
                                 </select>
+                                <button type="submit">Edit User</button>
                             </form>
                         </table>
                     </div>
-
                 </div>
             </div>
         </div>
