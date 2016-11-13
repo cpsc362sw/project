@@ -17,6 +17,30 @@
 
 }
 
+// footer
+.footer {
+  color: white;
+  position: fixed;
+  bottom: 0;
+  background-color: #31708f;
+  border-color: #3097d1;
+  height: 50px;
+  width: 100%;
+
+  #copyright {
+    margin-top: 15px;
+    margin-left: 5%;
+    float: left;
+    a { color: white; }
+  }
+  #tandc {
+    margin-top: 15px;
+    margin-right: 5%;
+    float: right;
+    a { color: white; }
+  }
+}
+
 
 //  forms
 .form-block { margin: 10px 15px; }

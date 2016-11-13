@@ -14,6 +14,16 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/terms', function () {
+    return view('terms');
+});
+Route::get('/copyright', function () {
+    return view('copyright');
+});
+Route::get('/privacy', function () {
+    return view('privacy');
+});
+
 
 Auth::routes();
 
@@ -44,6 +54,10 @@ Route::group(['middleware' => ['auth']], function() {
             'as' => 'postuser',
             'uses' => 'AdminController@postEditUser'
         ]);
+        Route::get('/users/delete/{id}', [
+            'as' => 'deleteuser',
+            'uses' => 'AdminController@getDeleteUser'
+        ]);
 
         # calendar landing page
         Route::get('/calendar', [
@@ -54,6 +68,11 @@ Route::group(['middleware' => ['auth']], function() {
         Route::get('/timeclock', [
             'as'=> 'admin.timeclock',
             'uses' => 'AdminController@getTimeClock'
+        ]);
+        
+        Route::post('/timeclock', [
+        		'as'=> 'admin.timeclock',
+        		'uses' => 'AdminController@postTimeClock'
         ]);
 
         # payroll landing page

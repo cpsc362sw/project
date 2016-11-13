@@ -85,5 +85,9 @@
     <!-- Scripts -->
     <script src="/js/app.js"></script>
     <script src="{{ asset('js/users.js') }}"></script>
+<footer class="footer">
+    <label id="copyright"><a href="{{ url('/copyright') }}">Copyright Statement</a></label>
+    <label id="tandc"><a href="{{ url('/privacy') }}">Privacy Policy</a> | <a href="{{ url('/terms') }}">Terms and Conditions</a></label>
+</footer>
 </body>
 </html>
