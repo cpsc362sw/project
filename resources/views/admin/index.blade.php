@@ -31,11 +31,11 @@
                                 </label>
                             </div>
                         </a>
-                        <a href="{{ url('/admin/payroll') }}">
+                        <a href="{{ url('/admin/reports') }}">
                             <div class="col-md-6 payroll">
                                 <label>
                                     <i class="fa fa-money" aria-hidden="true"></i>
-                                    Payroll
+                                    Reports
                                 </label>
                             </div>
                         </a>

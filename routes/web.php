@@ -76,9 +76,9 @@ Route::group(['middleware' => ['auth']], function() {
         ]);
 
         # payroll landing page
-        Route::get('/payroll', [
-            'as'=> 'admin.payroll',
-            'uses'=> 'AdminController@getPayroll'
+        Route::get('/reports', [
+            'as'=> 'admin.reports',
+            'uses'=> 'AdminController@getReports'
         ]);
     });
 

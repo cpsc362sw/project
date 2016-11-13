@@ -116,8 +116,8 @@ class AdminController extends Controller
     	return view('admin.timeclock.index')->withSuccess("Time clocked successfully!");
     }
     
-    public function getPayroll() {
+    public function getReports() {
 
-        return view('admin.payroll.index');
+        return view('admin.reports.index');
     }
 }
