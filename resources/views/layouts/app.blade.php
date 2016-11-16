@@ -8,12 +8,18 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Laravel</title>
+    <title>HRbii</title>
+
+    <!-- Scripts -->
+    <script src="/js/app.js"></script>
+    <script src="{{ asset('js/users.js') }}"></script>
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui.min.js"></script>
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/js/jquery-ui.min.css" rel="stylesheet">
 
-    <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -82,9 +88,6 @@
 
     @yield('content')
 
-    <!-- Scripts -->
-    <script src="/js/app.js"></script>
-    <script src="{{ asset('js/users.js') }}"></script>
 <footer class="footer">
     <label id="copyright"><a href="{{ url('/copyright') }}">Copyright Statement</a></label>
     <label id="tandc"><a href="{{ url('/privacy') }}">Privacy Policy</a> | <a href="{{ url('/terms') }}">Terms and Conditions</a></label>

@@ -109,3 +109,101 @@
   50%  { -webkit-transform:  rotate(-1deg); }
   100%  { -webkit-transform:  rotate(0deg); }
 }
+
+
+// user css
+.panel-user { color: #807c7c !important; border: none !important; }
+.panel-user .thumb { width: 100px; }
+
+.user-tiles {
+  text-align: center;
+  background-color: #fff;
+  border: 1px solid transparent;
+  padding: 25px 0;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  height: 500px;
+  position: relative;
+
+  .button-wrap {
+    width: 100%;
+    position: absolute;
+    bottom: 15px;
+    text-align: center;
+
+
+    button {
+      font-size: 20px;
+      font-weight: 600;
+      background: white;
+      color: #61c138;
+      border: 2px solid #61c138;
+      width: 50%;
+      border-radius: 15px;
+
+      &:hover {
+        color: #99cb84;
+        border: 2px solid #99cb84;
+      }
+    }
+  }
+
+  .ui-datepicker {
+    margin: 10px auto !important;
+  }
+}
+
+.user-detail-left {
+  width: 50%;
+  float: left;
+
+  .user-info-left {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+    font-size: 120%;
+
+    label {
+      display: block;
+    }
+  }
+}
+.user-detail-right {
+  width: 50%;
+  float: right;
+  text-align: right;
+
+  .user-info-right {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 120%;
+    padding-top: 28px;
+
+    .search {
+      display: block;
+      width: 200px;
+    }
+    .my-messages {
+      cursor: hand;
+      cursor: pointer;
+      &:hover {
+        color: #31708f;
+      }
+    }
+  }
+}
+
+.clear { clear: both; }
+.large-title { font-size:20px; font-weight: 600; }
+.gray-border { width: 50%; padding: 5px 10px; border: 1px solid #cecece; background: #f1f1f1; }
+
+
+// bootstrap overrides
+.input-group-addon { background: #31708f; color: white; cursor: hand; cursor: pointer; }
+
+
+.event a {
+  background-color: #42B373 !important;
+  background-image :none !important;
+  color: #ffffff !important;
+}
