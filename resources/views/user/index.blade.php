@@ -75,7 +75,7 @@
                     </div>
 
                     <div class="button-wrap">
-                        <button>Enter Time <i class="fa fa-edit" aria-hidden="true"></i></button>
+                        <button>Edit Time <i class="fa fa-edit" aria-hidden="true"></i></button>
                     </div>
                 </div>
             </div>
