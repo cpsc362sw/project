@@ -15,7 +15,11 @@
                                 <input type="email" name="email" value="{{ $user->email }}" />
                                 <select name="role_id">
                                     @foreach($role as $role_id => $role_name)
-                                        <option value="{{ $role_id }}">{{ ucfirst($role_name) }}</option>
+                                        @if ($role_id == $user->role_id)
+                                            <option value="{{ $role_id }}" selected>{{ ucfirst($role_name) }}</option>
+                                        @else
+                                            <option value="{{ $role_id }}">{{ ucfirst($role_name) }}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                                 <button type="submit">Edit User</button>
