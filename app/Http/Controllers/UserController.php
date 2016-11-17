@@ -21,4 +21,16 @@ class UserController extends Controller
             ->with('today', date('m-d-Y'))
             ->with('entries', $entries);
     }
+    
+    # user get edit time clock
+    public function getEditTimeClock() {
+    
+    	return view('user.timeclock.index');
+    }
+    
+    # user post edit time clock
+    public function postEditTimeClock() {
+    
+    	return view('user.timeclock.index');
+    }
 }

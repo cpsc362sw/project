@@ -87,6 +87,18 @@ Route::group(['middleware' => ['auth']], function() {
             'as' => 'user',
             'uses' => 'UserController@index'
         ]);
+        
+        # user get edit time clock
+        Route::get('/timeclock', [
+        		'as' => 'user.timeclock',
+        		'uses' => 'UserController@getEditTimeClock'
+        ]);
+        
+        # user post edit time clock
+        Route::post('/timeclock', [
+        		'as' => 'user.timeclock',
+        		'uses' => 'UserController@postEditTimeClock'
+        ]);
     });
 });
 
