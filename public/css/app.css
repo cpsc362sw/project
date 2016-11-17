@@ -8099,7 +8099,7 @@ button.close {
         color: #99cb84;
         border: 2px solid #99cb84; }
   .user-tiles .ui-datepicker {
-    margin: 25px auto !important;
+    margin: 65px auto !important;
     width: 80%; }
   .user-tiles .timeclock-list {
     width: 75%;
@@ -8108,8 +8108,30 @@ button.close {
       margin: 10px;
       width: 100%;
       text-align: left;
+      padding-left: 50px; }
+      .user-tiles .timeclock-list .time label {
+        font-weight: 600;
+        width: 90px; }
+      .user-tiles .timeclock-list .time .add {
+        width: 55px;
+        border-radius: 5px;
+        background: #31708f;
+        color: white;
+        padding: 1px;
+        text-align: center;
+        cursor: pointer;
+        cursor: hand; }
+        .user-tiles .timeclock-list .time .add:hover {
+          background: #5193b3; }
+  .user-tiles .benefits-list {
+    width: 75%;
+    margin: 65px auto; }
+    .user-tiles .benefits-list .benefits {
+      margin: 10px;
+      width: 100%;
+      text-align: left;
       padding-left: 15px; }
-      .user-tiles .timeclock-list .timelabel {
+      .user-tiles .benefits-list .benefitslabel {
         font-weight: 600; }
 
 .user-detail-left {
@@ -8311,7 +8333,7 @@ button.close {
         color: #99cb84;
         border: 2px solid #99cb84; }
   .user-tiles .ui-datepicker {
-    margin: 25px auto !important;
+    margin: 65px auto !important;
     width: 80%; }
   .user-tiles .timeclock-list {
     width: 75%;
@@ -8320,8 +8342,30 @@ button.close {
       margin: 10px;
       width: 100%;
       text-align: left;
+      padding-left: 50px; }
+      .user-tiles .timeclock-list .time label {
+        font-weight: 600;
+        width: 90px; }
+      .user-tiles .timeclock-list .time .add {
+        width: 55px;
+        border-radius: 5px;
+        background: #31708f;
+        color: white;
+        padding: 1px;
+        text-align: center;
+        cursor: pointer;
+        cursor: hand; }
+        .user-tiles .timeclock-list .time .add:hover {
+          background: #5193b3; }
+  .user-tiles .benefits-list {
+    width: 75%;
+    margin: 65px auto; }
+    .user-tiles .benefits-list .benefits {
+      margin: 10px;
+      width: 100%;
+      text-align: left;
       padding-left: 15px; }
-      .user-tiles .timeclock-list .timelabel {
+      .user-tiles .benefits-list .benefitslabel {
         font-weight: 600; }
 
 .user-detail-left {

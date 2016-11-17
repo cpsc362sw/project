@@ -150,7 +150,7 @@
 
   /** USER CALENDAR **/
   .ui-datepicker {
-    margin: 25px auto !important;
+    margin: 65px auto !important;
     width: 80%;
   }
 
@@ -163,15 +163,37 @@
       margin: 10px;
       width: 100%;
       text-align: left;
-      padding-left: 15px;
-      &label { font-weight: 600; }
+      padding-left: 50px;
+      label { font-weight: 600; width: 90px; }
+      .add {
+        width: 55px;
+        border-radius: 5px;
+        background: #31708f;
+        color: white;
+        padding: 1px;
+        text-align: center;
+        cursor: pointer;
+        cursor: hand;
+        &:hover {
+          background: #5193b3;
+        }
+      }
     }
 
   }
 
   /** USER BENEFITS **/
   .benefits-list {
+    width: 75%;
+    margin: 65px auto;
 
+    .benefits {
+      margin: 10px;
+      width: 100%;
+      text-align: left;
+      padding-left: 15px;
+      &label { font-weight: 600; }
+    }
   }
 }
 

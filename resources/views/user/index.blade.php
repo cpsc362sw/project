@@ -36,10 +36,42 @@
                     <label class="large-title gray-border">Time Clock &nbsp;&nbsp;<i class="fa fa-clock-o" aria-hidden="true"></i></label>
                     <div class="timeclock-list">
                         <div class="large-title">Today: {{ $today }}</div>
-                        <div class="gray-border time"><label>Time In:</label></div>
-                        <div class="gray-border time"><label>Lunch Out:</label></div>
-                        <div class="gray-border time"><label>Lunch In:</label></div>
-                        <div class="gray-border time"><label>Time Out:</label></div>
+                        <div class="gray-border time"><label>Time In:</label>
+                            @if(isset($entries['time_in']))
+                                {{ date('H:i:s', strtotime($entries['time_in'])) }}
+                            @else
+                                <a href="{{ url('/user/timeclock') }}">
+                                    <label class="add"><i class="fa fa-plus"></i>&nbsp;Add</label>
+                                </a>
+                            @endif
+                        </div>
+                        <div class="gray-border time"><label>Lunch Out:</label>
+                            @if(isset($entries['lunch_out']))
+                                {{ date('H:i:s', strtotime($entries['lunch_out'])) }}
+                            @else
+                                <a href="{{ url('/user/timeclock') }}">
+                                    <label class="add"><i class="fa fa-plus"></i>&nbsp;Add</label>
+                                </a>
+                            @endif
+                        </div>
+                        <div class="gray-border time"><label>Lunch In:</label>
+                            @if(isset($entries['lunch_in']))
+                                {{ date('H:i:s', strtotime($entries['lunch_in'])) }}
+                            @else
+                                <a href="{{ url('/user/timeclock') }}">
+                                    <label class="add"><i class="fa fa-plus"></i>&nbsp;Add</label>
+                                </a>
+                            @endif
+                        </div>
+                        <div class="gray-border time"><label>Time Out:</label>
+                            @if(isset($entries['time_out']))
+                                {{ date('H:i:s', strtotime($entries['time_out'])) }}
+                            @else
+                                <a href="{{ url('/user/timeclock') }}">
+                                    <label class="add"><i class="fa fa-plus"></i>&nbsp;Add</label>
+                                </a>
+                            @endif
+                        </div>
                     </div>
 
                     <div class="button-wrap">
@@ -52,7 +84,10 @@
                     <label class="large-title gray-border">Benefits &nbsp;&nbsp;<i class="fa fa-medkit" aria-hidden="true"></i></label>
 
                     <div class="benefits-list">
-                        <div></div>
+                        <div class="gray-border benefits"><label>Provider:</label></div>
+                        <div class="gray-border benefits"><label>Group:</label></div>
+                        <div class="gray-border benefits"><label>PCP:</label></div>
+                        <div class="gray-border benefits"><label>Since:</label></div>
                     </div>
 
                     <div class="button-wrap">

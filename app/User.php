@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Role;
+use App\Timeclock;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -59,6 +60,10 @@ class User extends Authenticatable
      */
     public function roles() {
         return $this->hasOne('App\Role', 'id', 'role_id');
+    }
+
+    public function timeEntries() {
+        return $this->hasMany('App\Timeclock', 'user_id', 'id');
     }
 
     /**
@@ -141,5 +146,51 @@ class User extends Authenticatable
      */
     public function isUser() {
          return ($this->roles->name == 'user');
+     }
+
+
+    /**
+     * Get only todays entries for a user, pluck only what we need in array format.
+     *  ['action' => 'timestamp'] for easy iteration.
+     *
+     * @return mixed
+     */
+     public function getTodaysEntries() {
+         return Timeclock::where('user_id', '=', $this->id)
+             ->whereRaw('Date(`time`) = CURDATE()')->pluck('time','action')->toArray();
+     }
+
+
+    /**
+     * TODO: return items
+     */
+     public function getTimeEntries() {
+         $entries = $this->timeEntries;
+
+         if ($entries) {
+             $time_in = [];
+             $time_out = [];
+             $lunch_in = [];
+             $lunch_out = [];
+
+             foreach ( $entries as $entry ) {
+                switch($entry->action) {
+                    case 'time_in':
+                        $time_in[] = $entry;
+                        break;
+                    case 'time_out':
+                        $time_out[] = $entry;
+                        break;
+                    case 'lunch_in':
+                        $lunch_in[] = $entry;
+                        break;
+                    case 'lunch_out':
+                        $lunch_out[] = $entry;
+                        break;
+                }
+             }
+         } else {
+             null;
+         }
      }
 }

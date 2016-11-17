@@ -6,18 +6,19 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Timeclock;
 
 class UserController extends Controller
 {
     public function index() {
         $user = Auth::user();
 
-        $last_login = $user['updated_at']->toDateTimeString();
+        $entries = $user->getTodaysEntries();
 
         return view('user.index')
             ->with('user', $user)
             ->with('username', ucwords($user->name))
             ->with('today', date('m-d-Y'))
-            ->with('last_login', $last_login);
+            ->with('entries', $entries);
     }
 }
