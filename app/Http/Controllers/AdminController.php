@@ -82,11 +82,20 @@ class AdminController extends Controller
             ->with('user', $user);
     }
 
-    public function postDeleteUser($id) {
+    public function postDeleteUser(Request $request, $id) {
+        $active_user = Auth::user();
         $user = User::where('id', '=', $id)->first();
 
-        return redirect('admin')
-            ->with('status', 'User deleted!');
+        // Prevent admins from deleting themselves
+        if ($user->id == $active_user->id) {
+            return redirect('admin')
+                ->with('status', 'No changes made. You may not delete yourself!');
+        } else {
+            $user->delete();
+
+            return redirect('admin')
+                ->with('status', 'User deleted!');
+        }
     }
 
     public function getCalendar() {

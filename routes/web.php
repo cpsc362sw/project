@@ -58,6 +58,10 @@ Route::group(['middleware' => ['auth']], function() {
             'as' => 'deleteuser',
             'uses' => 'AdminController@getDeleteUser'
         ]);
+        Route::post('/users/delete/{id}', [
+            'as' => 'postdeleteuser',
+            'uses' => 'AdminController@postDeleteUser'
+        ]);
 
         # calendar landing page
         Route::get('/calendar', [
