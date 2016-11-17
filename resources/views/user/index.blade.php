@@ -33,8 +33,14 @@
             </div>
             <div class="col-md-4">
                 <div class="user-tiles">
-                    <label class="large-title gray-border">Time Entry</label>
-
+                    <label class="large-title gray-border">Time Clock &nbsp;&nbsp;<i class="fa fa-clock-o" aria-hidden="true"></i></label>
+                    <div class="timeclock-list">
+                        <div class="large-title">Today: {{ $today }}</div>
+                        <div class="gray-border time"><label>Time In:</label></div>
+                        <div class="gray-border time"><label>Lunch Out:</label></div>
+                        <div class="gray-border time"><label>Lunch In:</label></div>
+                        <div class="gray-border time"><label>Time Out:</label></div>
+                    </div>
 
                     <div class="button-wrap">
                         <button>Enter Time <i class="fa fa-edit" aria-hidden="true"></i></button>
@@ -43,17 +49,20 @@
             </div>
             <div class="col-md-4">
                 <div class="user-tiles">
-                    <label class="large-title gray-border">Benefits</label>
+                    <label class="large-title gray-border">Benefits &nbsp;&nbsp;<i class="fa fa-medkit" aria-hidden="true"></i></label>
 
+                    <div class="benefits-list">
+                        <div></div>
+                    </div>
 
                     <div class="button-wrap">
-                        <button>Elect</button>
+                        <button>Select</button>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="user-tiles">
-                    <label class="large-title gray-border">Calendar</label>
+                    <label class="large-title gray-border">Calendar &nbsp;&nbsp;<i class="fa fa-calendar" aria-hidden="true"></i></label>
 
                     <div class="datepicker"></div>
 

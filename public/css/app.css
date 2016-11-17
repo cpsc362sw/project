@@ -8062,6 +8062,7 @@ button.close {
   100% {
     -webkit-transform: rotate(0deg); } }
 
+/************* BEGIN USER CSS *************/
 .panel-user {
   color: #807c7c !important;
   border: none !important; }
@@ -8072,12 +8073,15 @@ button.close {
 .user-tiles {
   text-align: center;
   background-color: #fff;
-  border: 1px solid transparent;
+  border: 1px solid #d3e0e9;
   padding: 25px 0;
   border-radius: 4px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   height: 500px;
-  position: relative; }
+  position: relative;
+  /** USER CALENDAR **/
+  /** USER TIMECLOCK **/
+  /** USER BENEFITS **/ }
   .user-tiles .button-wrap {
     width: 100%;
     position: absolute;
@@ -8095,7 +8099,18 @@ button.close {
         color: #99cb84;
         border: 2px solid #99cb84; }
   .user-tiles .ui-datepicker {
-    margin: 10px auto !important; }
+    margin: 25px auto !important;
+    width: 80%; }
+  .user-tiles .timeclock-list {
+    width: 75%;
+    margin: 25px auto; }
+    .user-tiles .timeclock-list .time {
+      margin: 10px;
+      width: 100%;
+      text-align: left;
+      padding-left: 15px; }
+      .user-tiles .timeclock-list .timelabel {
+        font-weight: 600; }
 
 .user-detail-left {
   width: 50%;
@@ -8126,6 +8141,7 @@ button.close {
       .user-detail-right .user-info-right .my-messages:hover {
         color: #31708f; }
 
+/************* END USER CSS *************/
 .clear {
   clear: both; }
 
@@ -8258,6 +8274,7 @@ button.close {
   100% {
     -webkit-transform: rotate(0deg); } }
 
+/************* BEGIN USER CSS *************/
 .panel-user {
   color: #807c7c !important;
   border: none !important; }
@@ -8268,12 +8285,15 @@ button.close {
 .user-tiles {
   text-align: center;
   background-color: #fff;
-  border: 1px solid transparent;
+  border: 1px solid #d3e0e9;
   padding: 25px 0;
   border-radius: 4px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   height: 500px;
-  position: relative; }
+  position: relative;
+  /** USER CALENDAR **/
+  /** USER TIMECLOCK **/
+  /** USER BENEFITS **/ }
   .user-tiles .button-wrap {
     width: 100%;
     position: absolute;
@@ -8291,7 +8311,18 @@ button.close {
         color: #99cb84;
         border: 2px solid #99cb84; }
   .user-tiles .ui-datepicker {
-    margin: 10px auto !important; }
+    margin: 25px auto !important;
+    width: 80%; }
+  .user-tiles .timeclock-list {
+    width: 75%;
+    margin: 25px auto; }
+    .user-tiles .timeclock-list .time {
+      margin: 10px;
+      width: 100%;
+      text-align: left;
+      padding-left: 15px; }
+      .user-tiles .timeclock-list .timelabel {
+        font-weight: 600; }
 
 .user-detail-left {
   width: 50%;
@@ -8322,6 +8353,7 @@ button.close {
       .user-detail-right .user-info-right .my-messages:hover {
         color: #31708f; }
 
+/************* END USER CSS *************/
 .clear {
   clear: both; }
 

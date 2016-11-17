@@ -17,6 +17,7 @@ class UserController extends Controller
         return view('user.index')
             ->with('user', $user)
             ->with('username', ucwords($user->name))
+            ->with('today', date('m-d-Y'))
             ->with('last_login', $last_login);
     }
 }

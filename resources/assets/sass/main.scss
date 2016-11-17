@@ -111,14 +111,14 @@
 }
 
 
-// user css
+/************* BEGIN USER CSS *************/
 .panel-user { color: #807c7c !important; border: none !important; }
 .panel-user .thumb { width: 100px; }
 
 .user-tiles {
   text-align: center;
   background-color: #fff;
-  border: 1px solid transparent;
+  border: 1px solid #d3e0e9;
   padding: 25px 0;
   border-radius: 4px;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
@@ -148,8 +148,30 @@
     }
   }
 
+  /** USER CALENDAR **/
   .ui-datepicker {
-    margin: 10px auto !important;
+    margin: 25px auto !important;
+    width: 80%;
+  }
+
+  /** USER TIMECLOCK **/
+  .timeclock-list {
+    width: 75%;
+    margin: 25px auto;
+
+    .time {
+      margin: 10px;
+      width: 100%;
+      text-align: left;
+      padding-left: 15px;
+      &label { font-weight: 600; }
+    }
+
+  }
+
+  /** USER BENEFITS **/
+  .benefits-list {
+
   }
 }
 
@@ -193,6 +215,8 @@
   }
 }
 
+/************* END USER CSS *************/
+
 .clear { clear: both; }
 .large-title { font-size:20px; font-weight: 600; }
 .gray-border { width: 50%; padding: 5px 10px; border: 1px solid #cecece; background: #f1f1f1; }
@@ -202,6 +226,7 @@
 .input-group-addon { background: #31708f; color: white; cursor: hand; cursor: pointer; }
 
 
+// for calendar
 .event a {
   background-color: #42B373 !important;
   background-image :none !important;
