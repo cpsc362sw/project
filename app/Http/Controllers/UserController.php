@@ -30,7 +30,18 @@ class UserController extends Controller
     
     # user post edit time clock
     public function postEditTimeClock() {
-    
-    	return view('user.timeclock.index');
+        date_default_timezone_set('America/Los_Angeles');
+
+        $user = Auth::user();
+        $entry = new Timeclock;
+
+        $entry->user_id = $user->id;
+        $entry->action = $_POST['action'];
+        $entry->time = date('Y-m-d H:i:s', time());
+
+        $entry->save();
+
+        return redirect('user')
+            ->with('status', 'Time Logged Successfully.');
     }
 }

@@ -8112,6 +8112,8 @@ button.close {
       .user-tiles .timeclock-list .time label {
         font-weight: 600;
         width: 90px; }
+      .user-tiles .timeclock-list .time form {
+        display: inline; }
       .user-tiles .timeclock-list .time .add {
         width: 55px;
         border-radius: 5px;
@@ -8346,6 +8348,8 @@ button.close {
       .user-tiles .timeclock-list .time label {
         font-weight: 600;
         width: 90px; }
+      .user-tiles .timeclock-list .time form {
+        display: inline; }
       .user-tiles .timeclock-list .time .add {
         width: 55px;
         border-radius: 5px;

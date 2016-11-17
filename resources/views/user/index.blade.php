@@ -31,6 +31,7 @@
                     </div>
                 </div>
             </div>
+            @if(isset($status))<div style="width: 100%; height: 50px; margin: 25px;">{{ $status }}</div>@endif
             <div class="col-md-4">
                 <div class="user-tiles">
                     <label class="large-title gray-border">Time Clock &nbsp;&nbsp;<i class="fa fa-clock-o" aria-hidden="true"></i></label>
@@ -40,36 +41,44 @@
                             @if(isset($entries['time_in']))
                                 {{ date('H:i:s', strtotime($entries['time_in'])) }}
                             @else
-                                <a href="{{ url('/user/timeclock') }}">
-                                    <label class="add"><i class="fa fa-plus"></i>&nbsp;Add</label>
-                                </a>
+                                <form method="post" action="{{ url('/user/timeclock') }}">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="action" value="time_in">
+                                    <button class="add"><i class="fa fa-plus"></i>&nbsp;Add</button>
+                                </form>
                             @endif
                         </div>
                         <div class="gray-border time"><label>Lunch Out:</label>
                             @if(isset($entries['lunch_out']))
                                 {{ date('H:i:s', strtotime($entries['lunch_out'])) }}
                             @else
-                                <a href="{{ url('/user/timeclock') }}">
-                                    <label class="add"><i class="fa fa-plus"></i>&nbsp;Add</label>
-                                </a>
+                                <form method="post" action="{{ url('/user/timeclock') }}">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="action" value="lunch_in">
+                                    <button class="add"><i class="fa fa-plus"></i>&nbsp;Add</button>
+                                </form>
                             @endif
                         </div>
                         <div class="gray-border time"><label>Lunch In:</label>
                             @if(isset($entries['lunch_in']))
                                 {{ date('H:i:s', strtotime($entries['lunch_in'])) }}
                             @else
-                                <a href="{{ url('/user/timeclock') }}">
-                                    <label class="add"><i class="fa fa-plus"></i>&nbsp;Add</label>
-                                </a>
+                                <form method="post" action="{{ url('/user/timeclock') }}">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="action" value="lunch_out">
+                                    <button class="add"><i class="fa fa-plus"></i>&nbsp;Add</button>
+                                </form>
                             @endif
                         </div>
                         <div class="gray-border time"><label>Time Out:</label>
                             @if(isset($entries['time_out']))
                                 {{ date('H:i:s', strtotime($entries['time_out'])) }}
                             @else
-                                <a href="{{ url('/user/timeclock') }}">
-                                    <label class="add"><i class="fa fa-plus"></i>&nbsp;Add</label>
-                                </a>
+                                <form method="post" action="{{ url('/user/timeclock') }}">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" name="action" value="time_out">
+                                    <button class="add"><i class="fa fa-plus"></i>&nbsp;Add</button>
+                                </form>
                             @endif
                         </div>
                     </div>

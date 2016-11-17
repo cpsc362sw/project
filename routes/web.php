@@ -74,7 +74,7 @@ Route::group(['middleware' => ['auth']], function() {
             'uses' => 'AdminController@getTimeClock'
         ]);
         
-        Route::post('/timeclock', [
+        Route::post('/timeclock/', [
         		'as'=> 'admin.timeclock',
         		'uses' => 'AdminController@postTimeClock'
         ]);
