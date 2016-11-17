@@ -54,7 +54,7 @@
                             @else
                                 <form method="post" action="{{ url('/user/timeclock') }}">
                                     {{ csrf_field() }}
-                                    <input type="hidden" name="action" value="lunch_in">
+                                    <input type="hidden" name="action" value="lunch_out">
                                     <button class="add"><i class="fa fa-plus"></i>&nbsp;Add</button>
                                 </form>
                             @endif
@@ -65,7 +65,7 @@
                             @else
                                 <form method="post" action="{{ url('/user/timeclock') }}">
                                     {{ csrf_field() }}
-                                    <input type="hidden" name="action" value="lunch_out">
+                                    <input type="hidden" name="action" value="lunch_in">
                                     <button class="add"><i class="fa fa-plus"></i>&nbsp;Add</button>
                                 </form>
                             @endif
