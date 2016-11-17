@@ -17,15 +17,18 @@ class UserController extends Controller
 
         return view('user.index')
             ->with('user', $user)
-            ->with('username', ucwords($user->name))
             ->with('today', date('m-d-Y'))
             ->with('entries', $entries);
     }
     
     # user get edit time clock
     public function getEditTimeClock() {
-    
-    	return view('user.timeclock.index');
+        $user = Auth::user();
+        $entries = $user->getTimeEntries();
+
+    	return view('user.timeclock.index')
+            ->with('user', $user)
+            ->with('entries', $entries);
     }
     
     # user post edit time clock

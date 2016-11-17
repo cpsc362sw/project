@@ -9,7 +9,7 @@
                         <div class="user-detail-left">
                             <img class="thumb img-thumbnail rounded float-xs-left" src="{{ URL::asset('/img/default-placeholder.png') }}">
                             <div class="user-info-left">
-                                <label class="large-title">{{ $username }}</label>
+                                <label class="large-title">{{ ucwords($user->name) }}</label>
                                 <label>User ID: {{ $user->id }}</label>
                             </div>
                         </div>
@@ -33,6 +33,8 @@
             </div>
             @if(isset($status))<div style="width: 100%; height: 50px; margin: 25px;">{{ $status }}</div>@endif
             <div class="col-md-4">
+
+                {{-- Timeclock --}}
                 <div class="user-tiles">
                     <label class="large-title gray-border">Time Clock &nbsp;&nbsp;<i class="fa fa-clock-o" aria-hidden="true"></i></label>
                     <div class="timeclock-list">
@@ -84,10 +86,14 @@
                     </div>
 
                     <div class="button-wrap">
-                        <button>Edit Time <i class="fa fa-edit" aria-hidden="true"></i></button>
+                        <form action="{{ url('/user/timeclock') }}">
+                            <button>Edit Time <i class="fa fa-edit" aria-hidden="true"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
+
+            {{-- BENEFITS --}}
             <div class="col-md-4">
                 <div class="user-tiles">
                     <label class="large-title gray-border">Benefits &nbsp;&nbsp;<i class="fa fa-medkit" aria-hidden="true"></i></label>
@@ -104,6 +110,8 @@
                     </div>
                 </div>
             </div>
+
+            {{-- Calendar --}}
             <div class="col-md-4">
                 <div class="user-tiles">
                     <label class="large-title gray-border">Calendar &nbsp;&nbsp;<i class="fa fa-calendar" aria-hidden="true"></i></label>

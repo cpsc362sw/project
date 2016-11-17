@@ -165,32 +165,11 @@ class User extends Authenticatable
      * TODO: return items
      */
      public function getTimeEntries() {
-         $entries = $this->timeEntries;
+         // Order by Month-Day
+         $entries = $this->timeEntries->groupBy(function($date) {
+             return date('m-d-Y', strtotime($date->time));
+         });
 
-         if ($entries) {
-             $time_in = [];
-             $time_out = [];
-             $lunch_in = [];
-             $lunch_out = [];
-
-             foreach ( $entries as $entry ) {
-                switch($entry->action) {
-                    case 'time_in':
-                        $time_in[] = $entry;
-                        break;
-                    case 'time_out':
-                        $time_out[] = $entry;
-                        break;
-                    case 'lunch_in':
-                        $lunch_in[] = $entry;
-                        break;
-                    case 'lunch_out':
-                        $lunch_out[] = $entry;
-                        break;
-                }
-             }
-         } else {
-             null;
-         }
+         return $entries;
      }
 }
