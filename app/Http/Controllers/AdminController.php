@@ -103,9 +103,18 @@ class AdminController extends Controller
         return view('admin.calendar.index');
     }
 
-    public function getTimeClock() {
 
+    public function getTimeClock() {
         return view('admin.timeclock.index');
+    }
+
+    public function getTimeClockView($id) {
+        $user = User::where('id', '=', $id)->first();
+        $entries = $user->getTimeEntries();
+
+        return view('admin.timeclock.view')
+            ->with('user', $user)
+            ->with('entries', $entries);
     }
     
     public function postTimeClock() {
