@@ -8165,6 +8165,9 @@ button.close {
       .user-detail-right .user-info-right .my-messages:hover {
         color: #31708f; }
 
+.time-edit-box {
+  border-bottom: 1px solid #d3e0e9; }
+
 /************* END USER CSS *************/
 .clear {
   clear: both; }
@@ -8400,6 +8403,9 @@ button.close {
       cursor: pointer; }
       .user-detail-right .user-info-right .my-messages:hover {
         color: #31708f; }
+
+.time-edit-box {
+  border-bottom: 1px solid #d3e0e9; }
 
 /************* END USER CSS *************/
 .clear {

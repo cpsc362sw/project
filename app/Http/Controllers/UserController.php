@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Timeclock;
+use App\User;
 
 class UserController extends Controller
 {
@@ -33,8 +34,6 @@ class UserController extends Controller
     
     # user post edit time clock
     public function postEditTimeClock() {
-        date_default_timezone_set('America/Los_Angeles');
-
         $user = Auth::user();
         $entry = new Timeclock;
 
@@ -46,5 +45,20 @@ class UserController extends Controller
 
         return redirect('user')
             ->with('status', 'Time Logged Successfully.');
+    }
+
+    public function postEditEntryTime() {
+        $id = $_POST['id'];
+        $time = $_POST['time'];
+
+        $entry = Timeclock::where('id', '=', $id)->first();
+
+        $date = date('Y-m-d', strtotime($entry->time));
+        $newTime = date('H:i:s', strtotime($time));
+
+        $entry->time = $date . " " . $newTime;
+        $entry->save();
+
+        return redirect('user/timeclock');
     }
 }

@@ -103,6 +103,13 @@ Route::group(['middleware' => ['auth']], function() {
         		'as' => 'user.timeclock',
         		'uses' => 'UserController@postEditTimeClock'
         ]);
+        # Single time update
+
+        Route::post('/timeclock/edit', [
+                'as' => 'user.timeclock.edit',
+                'uses' => 'UserController@postEditEntryTime'
+        ]);
+
     });
 });
 
