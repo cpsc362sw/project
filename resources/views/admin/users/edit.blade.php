@@ -40,6 +40,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="timeclock" class="col-md-4 control-label">Timeclock</label>
+                                <div class="col-md-6">
+                                    <a class="btn" href="{{ url('/admin/timeclock/'.$user->id) }}">View Times</a>
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save Changes</button>
                                 </div>

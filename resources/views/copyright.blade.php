@@ -1,5 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    Copyright
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    Copyright
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
