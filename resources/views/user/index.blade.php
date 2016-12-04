@@ -106,7 +106,9 @@
                     </div>
 
                     <div class="button-wrap">
-                        <button>Select</button>
+                        <form action="{{ url('/user/benefits') }}">
+                            <button>Edit <i class="fa fa-edit" aria-hidden="true"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>

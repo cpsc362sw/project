@@ -61,4 +61,11 @@ class UserController extends Controller
 
         return redirect('user/timeclock');
     }
+    
+    public function getEditBenefits() {
+        $user = Auth::user();
+        
+        return view('user.benefits.index')
+        ->with('user', $user);
+    }
 }
