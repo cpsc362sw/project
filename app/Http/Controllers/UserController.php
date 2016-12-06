@@ -68,4 +68,11 @@ class UserController extends Controller
         return view('user.benefits.index')
         ->with('user', $user);
     }
+
+    public function getProfile() {
+        $user = Auth::user();
+
+        return view('user.profile.index')
+            ->with('user', $user);
+    }
 }

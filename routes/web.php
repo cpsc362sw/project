@@ -121,6 +121,10 @@ Route::group(['middleware' => ['auth']], function() {
                 'uses' => 'UserController@postEditEntryTime'
         ]);
 
+        Route::get('/profile', [
+                'as' => 'user.profile',
+                'uses' => 'UserController@getProfile'
+        ]);
     });
 });
 
