@@ -259,3 +259,11 @@
   background-image :none !important;
   color: #ffffff !important;
 }
+
+
+input[type=file] {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 220px;
+}

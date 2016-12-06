@@ -8193,6 +8193,12 @@ button.close {
   background-image: none !important;
   color: #ffffff !important; }
 
+input[type=file] {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 220px; }
+
 /**
  NOTE: Use & when nesting elements, it will always refer to the parent.
        Important for when we have multiple selectors we are applying styles to.
@@ -8431,5 +8437,11 @@ button.close {
   background-color: #42B373 !important;
   background-image: none !important;
   color: #ffffff !important; }
+
+input[type=file] {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 220px; }
 
 /*# sourceMappingURL=app.css.map */
