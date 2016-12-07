@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
 use App\Timeclock;
 use App\User;
+use App\FileUtilities;
 
 class UserController extends Controller
 {
@@ -74,5 +74,42 @@ class UserController extends Controller
 
         return view('user.profile.index')
             ->with('user', $user);
+    }
+
+    public function postProfile(Request $request) {
+        $user = Auth::user();
+
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'email' => 'required|email|max:255',
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+        ]);
+
+        // accepted inputs
+        $acceptedFields = ['name','email','job_title','home_phone','mobile_phone'];
+
+        // find items by key in our POST variable
+        $acceptedInput = array_intersect_key($_POST, array_flip($acceptedFields));
+
+        if (!empty($_FILES['avatar']['name'])) {
+            $tmp_name = $_FILES["avatar"]["tmp_name"];
+            $file_name = $_FILES["avatar"]["name"];
+
+            move_uploaded_file($tmp_name, public_path('img/avatars/') . $file_name);
+
+            $user->avatar = '/img/avatars/' . $file_name;
+        }
+
+        $user->name = $acceptedInput['name'];
+        $user->email = $acceptedInput['email'];
+        $user->job_title = $acceptedInput['job_title'];
+        $user->home_phone = $acceptedInput['home_phone'];
+        $user->mobile_phone = $acceptedInput['mobile_phone'];
+        $user->save();
+
+
+        return view('user.profile.index')
+            ->with('user', $user)
+            ->with('success', "Profile Updated");
     }
 }
