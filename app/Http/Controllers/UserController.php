@@ -26,10 +26,12 @@ class UserController extends Controller
     public function getEditTimeClock() {
         $user = Auth::user();
         $entries = $user->getTimeEntries();
+        $entryType = array('time_in','lunch_out','lunch_in','time_out');
 
     	return view('user.timeclock.index')
             ->with('user', $user)
-            ->with('entries', $entries);
+            ->with('entries', $entries)
+            ->with('entryType', $entryType);
     }
     
     # user post edit time clock
@@ -48,23 +50,38 @@ class UserController extends Controller
     }
 
     public function postEditEntryTime() {
+        #dd($_POST);
         $id = $_POST['id'];
         $time = $_POST['time'];
+        $user = Auth::user();
+        $entry = new Timeclock;
+        $date = $_POST['date'];
 
-        $entry = Timeclock::where('id', '=', $id)->first();
+        if ($id == NULL) {
+            $entry->user_id = $user->id;
+            $entry->action = $_POST['type'];
+            $newDate = preg_replace('/(\d{2})-(\d{2})-(\d{4})/', '$3-$1-$2', $date);
+            $entry->time = $newDate . " " . $time;
 
-        $date = date('Y-m-d', strtotime($entry->time));
-        $newTime = date('H:i:s', strtotime($time));
+            $entry->save();
 
-        $entry->time = $date . " " . $newTime;
-        $entry->save();
+            # TODO: Save entry in new table for admin auditing instead of updating/adding entries
+        } else {
+            $entry = Timeclock::where('id', '=', $id)->first();
+
+            $date = date('Y-m-d', strtotime($entry->time));
+            $newTime = date('H:i:s', strtotime($time));
+
+            $entry->time = $date . " " . $newTime;
+            $entry->save();
+        }
 
         return redirect('user/timeclock');
     }
     
     public function getEditBenefits() {
         $user = Auth::user();
-        
+
         return view('user.benefits.index')
         ->with('user', $user);
     }

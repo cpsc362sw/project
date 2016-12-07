@@ -89,6 +89,12 @@ Route::group(['middleware' => ['auth']], function() {
             'as'=> 'admin.reports',
             'uses'=> 'AdminController@getReports'
         ]);
+
+        # payroll landing page
+        Route::get('/audit', [
+            'as'=> 'admin.audit',
+            'uses'=> 'AdminController@getAudit'
+        ]);
     });
 
     Route::group(['prefix' => 'user', 'middleware' => 'user'], function() {

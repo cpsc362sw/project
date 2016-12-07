@@ -39,22 +39,26 @@
                         <div class="time-edit-box">
                             <label class="large-title">Day: {{ $day }}</label>
                             <table>
-                            @foreach ($group as $entry)
+                            @for ($i = 0; $i < 4; $i++)
+                                @php (isset($group[$i]->id) ? $entry = $group[$i] : $entry = NULL)
                                 <tr style="line-height: 3em;">
                                     <td style="width:150px; font-weight:600;">
                                         <i class="fa fa-circle-thin" aria-hidden="true" style="font-size: 50%;"></i>
-&nbsp;&nbsp;                                      {{ ucwords(str_replace('_', ' ', $entry->action)) }}:
+&nbsp;&nbsp;                                      {{ ucwords(str_replace('_', ' ', $entryType[$i])) }}:
                                     </td>
                                     <td style="width:500px;">
                                         <form method="post" action="{{ url('/user/timeclock/edit') }}">
                                             {{ csrf_field() }}
-                                            <input type="hidden" name="id" value="{{ $entry->id }}">
-                                            <input name="time" value="{{ date('H:i:s', strtotime($entry->time)) }}" style="border:none; width:75px;">
+                                            <input type="hidden" name="id" value="{{ $entry->id or NULL }}" />
+                                            <input type="hidden" name="type" value="{{ $entryType[$i] }}" />
+                                            <input type="hidden" name="date" value="{{ $day }}" />
+                                            <input value="{{ isset($entry->time) ? date('H:i:s', strtotime($entry->time)) : '00:00:00' }}" style="border:none; width:75px;" disabled="disabled" />
+                                            <input name="time" value="{{ isset($entry->time) ? date('H:i:s', strtotime($entry->time)) : '00:00:00' }}" />
                                             <button class="btn btn-block" style="width:90px;display:inline;">Submit&nbsp;<i class="fa fa-pencil"></i></button>
                                         </form>
                                     </td>
                                 </tr>
-                            @endforeach
+                            @endfor
 
                             <tr>
                                 <td style="width:250px;font-weight: 600;">Time Worked: {{ App\Timeclock::getTimeDiff($group) }}</td>
