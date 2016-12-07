@@ -10,3 +10,5 @@ Homestead.yaml
 .project
 .settings/
 npm-debug.log
+/public/img/avatars
+
