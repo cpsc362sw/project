@@ -128,8 +128,12 @@ Route::group(['middleware' => ['auth']], function() {
         ]);
 
         Route::get('/profile', [
-                'as' => 'user.profile',
+                'as' => 'user.profile.edit',
                 'uses' => 'UserController@getProfile'
+        ]);
+        Route::post('/profile', [
+            'as' => 'user.profile.save',
+            'uses' => 'UserController@postProfile'
         ]);
     });
 });

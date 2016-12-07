@@ -8,7 +8,26 @@
                     <div class="panel-heading"><b>User</b> Dashboard <i class="fa fa-angle-right" aria-hidden="true"></i> Profile </div>
 
                         <div class="panel-body">
-                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/user/profile') }}" runat="server">
+                            <form class="form-horizontal" role="form" method="POST" action="{{ url('/user/profile') }}" runat="server" enctype="multipart/form-data">
+                                {{ csrf_field() }}
+
+                                @if (count($errors) > 0)
+                                    <div class="alert alert-danger">
+                                        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+
+                                @if (count(@$success) > 0)
+                                    <div class="alert alert-success" style="text-align: center;">
+                                        <strong>Success!</strong><br><br>
+                                        <label>{{ @$success }}</label>
+                                    </div>
+                                @endif
 
                             <div class="form-group {{ $errors->has('name') ? ' has-error' : '' }}">
                                 <label for="name" class="col-md-3 control-label">Name</label>
@@ -72,11 +91,11 @@
 
                             <div class="form-group">
                                 <div class="col-md-4 col-md-offset-4">
-                                    <img id="preview" class="thumbnail" style="width: 200px; height: 150px;">
+                                    <img id="preview" class="thumbnail" style="width: 200px; height: 150px;" src="{{ $user->avatar }}">
                                     <div>
                                         <label class="btn btn-file">
                                             <span class="fileupload-new"><strong>Select Image</strong></span>
-                                            <input type="file" id="imgUpload"/>
+                                            <input type="file" name="avatar" id="imgUpload" accept="image/*">
                                         </label>
                                         <a style="width:220px;" href="#" class="btn" id="imgRemove">Remove</a>
                                     </div>
@@ -114,7 +133,7 @@
         });
 
         $("#back").click(function() {
-            window.history.back();
+            window.location.href = "/user/";
         });
     </script>
 @endsection
