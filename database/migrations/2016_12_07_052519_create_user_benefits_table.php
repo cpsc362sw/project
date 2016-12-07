@@ -14,7 +14,7 @@ class CreateUserBenefitsTable extends Migration
     public function up()
     {
     	Schema::create('benefits', function (Blueprint $table) {
-
+            $table->increments('id');
     	});
     }
 
