@@ -97,10 +97,16 @@ Route::group(['middleware' => ['auth']], function() {
             'uses' => 'UserController@index'
         ]);
         
-        # user benefits page
+        # user benefits get
         Route::get('/benefits', [
         		'as' => 'user.benefits',
         		'uses' => 'UserController@getEditBenefits'
+        ]);
+        
+        # user benefits post
+        Route::post('/benefits', [
+        		'as' => 'user.benefits',
+        		'user' => 'UserController@postEditBenefits'
         ]);
         
         # user get edit time clock

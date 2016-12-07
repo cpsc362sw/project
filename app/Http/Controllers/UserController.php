@@ -68,6 +68,11 @@ class UserController extends Controller
         return view('user.benefits.index')
         ->with('user', $user);
     }
+    
+    public function postEditBenefits() {
+    	
+    	return view('user.index');
+    }
 
     public function getProfile() {
         $user = Auth::user();
