@@ -11,6 +11,6 @@ class CalendarEvent extends Model
     }
 
     public static function getEvents() {
-        return self::whereRaw('Date(date) >= CURDATE()')->get();
+        return self::whereRaw('Date(date) >= CURDATE() LIMIT 5')->get();
     }
 }

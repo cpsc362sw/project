@@ -8,7 +8,7 @@
         <div class="row">
             <div class="col-md-10">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><b>Administrative</b> Dashboard <i class="fa fa-angle-right" aria-hidden="true"></i> Create Event</div>
+                    <div class="panel-heading"><b>Administrative</b> Dashboard <i class="fa fa-angle-right" aria-hidden="true"></i>Event Management</div>
                     <div class="panel-body">
 
                         @if (count($errors) > 0)
@@ -118,7 +118,8 @@
                     if (data.success) {
                         for (var i = 0; i < data.events.length; i++) {
                             var date = new Date(data.events[i].date)
-                            var _date = date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
+                            date.setDate(date.getDate()+1);
+                            var _date = date.getMonth()+1 + '/' + date.getDate() + '/' + date.getFullYear();
 
                             eventDates[ new Date(_date) ] = data.events[i].title;
                         }
@@ -126,9 +127,10 @@
                         alert('Error: Could not load events for Calendar.');
                     }
                 }
+
             });
 
-
+            console.log(eventDates);
             $( ".datepicker" ).datepicker({
                 beforeShowDay: function(date) {
                     var highlight = eventDates[date];

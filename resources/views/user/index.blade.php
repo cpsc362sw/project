@@ -152,7 +152,8 @@
                     if (data.success) {
                         for (var i = 0; i < data.events.length; i++) {
                             var date = new Date(data.events[i].date)
-                            var _date = date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
+                            date.setDate(date.getDate()+1);
+                            var _date = date.getMonth()+1 + '/' + date.getDate() + '/' + date.getFullYear();
 
                             eventDates[new Date(_date)] = data.events[i].title;
                         }
