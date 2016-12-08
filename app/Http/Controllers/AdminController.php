@@ -122,10 +122,11 @@ class AdminController extends Controller
         $user = User::where('id', '=', $id)->first();
         $entries = $user->getTimeAuditEntries();
         $oldEntries = $user->getTimeEntries();
-
+        #dd($oldEntries);
         return view('admin.timeclock.audit')
             ->with('user', $user)
-            ->with('entries', $entries);
+            ->with('entries', $entries)
+            ->with('oldEntries', $oldEntries);
     }
 
     public function postTimeClock() {
