@@ -16,6 +16,19 @@
                                 <label class="large-title">Day: {{ $day }}</label>
                                 <table>
                                     @foreach ($group as $entry)
+                                        @php
+                                            if (isset($oldEntries[$day])) {
+                                                foreach($oldEntries[$day] as $struct) {
+                                                    if ($entry->action == $struct->action) {
+                                                        $oldEntry = $struct;
+                                                        break;
+                                                    }
+                                                }
+                                                #dd($oldEntry->where('action', '=', '$entry->action'));
+                                            } else {
+                                                $oldEntry = new \App\Timeclock();
+                                            }
+                                        @endphp
                                         <tr style="line-height: 3em;">
                                             <td style="width:150px; font-weight:600;">
                                                 <i class="fa fa-circle-thin" aria-hidden="true" style="font-size: 50%;"></i>
@@ -27,17 +40,17 @@
                                                     <input type="hidden" name="id" value="{{ $entry->id }}" />
                                                     <input type="hidden" name="type" value="{{ $entry->action }}" />
                                                     <input type="hidden" name="date" value="{{ $day }}" />
-                                                    <input value="{{ date('H:i:s', strtotime($entry->time)) }}" style="border:none; width:75px;" disabled="disabled" />
-                                                    <input name="time" value="{{ date('H:i:s', strtotime($entry->time)) }}" />
-                                                    <button class="btn btn-block" style="width:150px;display:inline;">Submit Change&nbsp;<i class="fa fa-pencil"></i></button>
+                                                    <input value="{{ isset($oldEntry->time) ? date('H:i:s', strtotime($oldEntry->time)) : '00:00:00' }}" style="border:none; width:75px;" disabled="disabled" />
+                                                    <input value="{{ date('H:i:s', strtotime($entry->time)) }}" style="border:none; width:75px;" disabled />
+                                                    <button class="btn btn-block" style="width:150px;display:inline;">Accept Change&nbsp;<i class="fa fa-check-circle"></i></button>
                                                 </form>
                                             </td>
                                         </tr>
                                     @endforeach`
 
-                                    <tr>
+                                    {{--<tr>
                                         <td style="width:250px;font-weight: 600;">Time Worked: {{ App\Timeclock::getTimeDiff($group) }}</td>
-                                    </tr>
+                                    </tr>--}}
                                 </table>
                             </div>
                         @endforeach
