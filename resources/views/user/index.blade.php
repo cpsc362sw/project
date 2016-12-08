@@ -130,27 +130,40 @@
     </div>
     <script>
         $(document).ready(function() {
+            var eventDates = {};
+            eventDates[new Date('11/11/2016')] = "Veterans Day";
+            eventDates[new Date('11/24/2016')] = "Thanksgiving Holiday";
+            eventDates[new Date('11/25/2016')] = "Thanksgiving Holiday";
+            eventDates[new Date('12/22/2016')] = "Christmas Holiday";
+            eventDates[new Date('12/23/2016')] = "Christmas Holiday";
+            eventDates[new Date('12/24/2016')] = "Christmas Eve";
+            eventDates[new Date('12/25/2016')] = "Christmas";
+            eventDates[new Date('12/26/2016')] = "Christmas Holiday";
+            eventDates[new Date('12/27/2016')] = "Christmas Holiday";
+
+            // pull in calendar events to dynamically populate our calendar
             $.ajax('/getCalendarEvents', {
                 type: 'get',
                 success: function (response) {
+                    // parase our json string to object
+                    // accessible via data.events
+                    var data = $.parseJSON(response);
 
+                    if (data.success) {
+                        for (var i = 0; i < data.events.length; i++) {
+                            var date = new Date(data.events[i].date)
+                            var _date = date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
+
+                            eventDates[new Date(_date)] = data.events[i].title;
+                        }
+                    } else {
+                        alert('Error: Could not load events for Calendar.');
+                    }
                 }
             });
 
-
-            var eventDates = {};
-            eventDates[ new Date( '11/11/2016' )] = "Veterans Day";
-            eventDates[ new Date( '11/24/2016' )] = "Thanksgiving Holiday";
-            eventDates[ new Date( '11/25/2016' )] = "Thanksgiving Holiday";
-            eventDates[ new Date( '12/22/2016' )] = "Christmas Holiday";
-            eventDates[ new Date( '12/23/2016' )] = "Christmas Holiday";
-            eventDates[ new Date( '12/24/2016' )] = "Christmas Eve";
-            eventDates[ new Date( '12/25/2016' )] = "Christmas";
-            eventDates[ new Date( '12/26/2016' )] = "Christmas Holiday";
-            eventDates[ new Date( '12/27/2016' )] = "Christmas Holiday";
-
-            $( ".datepicker" ).datepicker({
-                beforeShowDay: function(date) {
+            $(".datepicker").datepicker({
+                beforeShowDay: function (date) {
                     var highlight = eventDates[date];
                     if (highlight) {
                         return [true, "event", String(eventDates[date])];
@@ -158,7 +171,7 @@
                         return [true, "", ""]
                     }
                 }
-            });
+            }).trigger('click');
         });
 
     </script>

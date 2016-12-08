@@ -55,6 +55,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-calendar"></i> Create Event</button>
+                                    <button class="btn btn-primary" type="button" id="back">Back</button>
                                 </div>
                             </div>
                         </form>
@@ -66,6 +67,7 @@
 
     <script>
         $(document).ready(function() {
+            // static dates that we need to populate calendar with
             var eventDates = {};
             eventDates[ new Date( '11/11/2016' )] = "Veterans Day";
             eventDates[ new Date( '11/24/2016' )] = "Thanksgiving Holiday";
@@ -77,6 +79,28 @@
             eventDates[ new Date( '12/26/2016' )] = "Christmas Holiday";
             eventDates[ new Date( '12/27/2016' )] = "Christmas Holiday";
 
+            // pull in calendar events to dynamically populate our calendar
+            $.ajax('/getCalendarEvents', {
+                type: 'get',
+                success: function (response) {
+                    // parase our json string to object
+                    // accessible via data.events
+                    var data = $.parseJSON(response);
+
+                    if (data.success) {
+                        for (var i = 0; i < data.events.length; i++) {
+                            var date = new Date(data.events[i].date)
+                            var _date = date.getMonth() + 1 + '/' + date.getDate() + '/' + date.getFullYear();
+
+                            eventDates[ new Date(_date) ] = data.events[i].title;
+                        }
+                    } else {
+                        alert('Error: Could not load events for Calendar.');
+                    }
+                }
+            });
+
+
             $( ".datepicker" ).datepicker({
                 beforeShowDay: function(date) {
                     var highlight = eventDates[date];
@@ -87,6 +111,11 @@
                     }
                 }
             });
+
+            $("#back").click(function() {
+                window.location.href = "/admin/";
+            });
+
         });
 
     </script>

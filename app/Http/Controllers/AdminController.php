@@ -160,7 +160,14 @@ class AdminController extends Controller
     public function getEventsAjax() {
         $events = CalendarEvent::getEvents();
 
-        return json_encode($events);
+        $item = 0;
+         foreach ($events as $date => $title) {
+             $_events[$item]['date'] = $date;
+             $_events[$item]['title'] = $title;
+             $item++;
+         }
+
+        return json_encode(['success' => true, 'events' => $_events]);
     }
 
 
