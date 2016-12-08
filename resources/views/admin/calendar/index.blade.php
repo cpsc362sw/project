@@ -10,8 +10,26 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><b>Administrative</b> Dashboard <i class="fa fa-angle-right" aria-hidden="true"></i> Create Event</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" method="post" action="{{ url('admin/timeclock/') }}">
+                        <form class="form-horizontal" method="post" action="{{ url('admin/calendar/') }}">
                             {{ csrf_field() }}
+
+                            @if (count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
+                            @if (count(@$success) > 0)
+                                <div class="alert alert-success" style="text-align: center;">
+                                    <strong>Success!</strong><br><br>
+                                    <label>{{ @$success }}</label>
+                                </div>
+                            @endif
 
                             <div class="form-group">
                                 <label for="date" class="col-md-4 control-label">Date of Event:</label>

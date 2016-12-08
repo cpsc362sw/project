@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
 use App\Role;
+use App\CalendarEvent;
 use Form;
 
 use App\Http\Requests;
@@ -32,6 +33,11 @@ class AdminController extends Controller
             ->with('user', $user);
     }
 
+    /**
+     * get all users
+     *
+     * @return $this
+     */
     public function getUsers() {
         $user = Auth::user();
         $users = User::all();
@@ -41,6 +47,13 @@ class AdminController extends Controller
             ->with('users', $users);
     }
 
+    /**
+     * get user for editting
+     *
+     * @param $id
+     *
+     * @return $this
+     */
     public function getEditUser($id) {
         $user = User::where('id', '=', $id)->first();
         $role = Role::all()->pluck('name','id');
@@ -75,6 +88,13 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * delete user by id, approval
+     *
+     * @param $id
+     *
+     * @return $this
+     */
     public function getDeleteUser($id) {
         $user = User::where('id', '=', $id)->first();
 
@@ -82,6 +102,14 @@ class AdminController extends Controller
             ->with('user', $user);
     }
 
+    /**
+     * delete user by id
+     *
+     * @param Request $request
+     * @param $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postDeleteUser(Request $request, $id) {
         $active_user = Auth::user();
         $user = User::where('id', '=', $id)->first();
@@ -98,8 +126,41 @@ class AdminController extends Controller
         }
     }
 
+    /**
+     * get calendar event creator
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getCalendar() {
         return view('admin.calendar.index');
+    }
+
+    /**
+     * create calendar event
+     *
+     * @return $this
+     */
+    public function postCalendar() {
+        $user = Auth::user();
+        $event = new calendarEvent;
+
+        $event->user_id = $user->id;
+        $event->date = date('Y-m-d', strtotime($_POST['date']));
+        $event->title = $_POST['title'];
+        $event->description = $_POST['description'];
+        $event->save();
+
+        return view('admin.calendar.index')
+            ->with('success', 'Calendar Event: '. $_POST['title'] . ' on ' . $_POST['date'] . " created");
+    }
+
+    /**
+     * ajax request to retrieve events
+     */
+    public function getEventsAjax() {
+        $events = CalendarEvent::getEvents();
+
+        return json_encode($events);
     }
 
 

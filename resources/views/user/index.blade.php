@@ -130,6 +130,14 @@
     </div>
     <script>
         $(document).ready(function() {
+            $.ajax('/getCalendarEvents', {
+                type: 'get',
+                success: function (response) {
+
+                }
+            });
+
+
             var eventDates = {};
             eventDates[ new Date( '11/11/2016' )] = "Veterans Day";
             eventDates[ new Date( '11/24/2016' )] = "Thanksgiving Holiday";

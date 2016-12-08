@@ -11,6 +11,10 @@
 |
 */
 
+/** create login/register routes */
+Auth::routes();
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -24,8 +28,12 @@ Route::get('/privacy', function () {
     return view('privacy');
 });
 
+// ajax request for calendar dates
+Route::get('/getCalendarEvents', [
+    'as' => 'events',
+    'uses' => 'AdminController@getEventsAjax'
+]);
 
-Auth::routes();
 
 Route::group(['middleware' => ['auth']], function() {
     Route::get('/home', [
@@ -68,6 +76,12 @@ Route::group(['middleware' => ['auth']], function() {
             'as' => 'admin.calendar',
             'uses' => 'AdminController@getCalendar'
         ]);
+
+        Route::post('/calendar', [
+            'as' => 'admin.calendar',
+            'uses' => 'AdminController@postCalendar'
+        ]);
+
         # timeclock landing page
         Route::get('/timeclock', [
             'as'=> 'admin.timeclock',
