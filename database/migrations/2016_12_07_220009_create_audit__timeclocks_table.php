@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAuditTimeclockTable extends Migration
+class CreateAuditTimeclocksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAuditTimeclockTable extends Migration
      */
     public function up()
     {
-        Schema::create('audit_timeclock', function(Blueprint $table) {
+        Schema::create('audit__timeclocks', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->string('action', 45);
@@ -30,6 +30,6 @@ class CreateAuditTimeclockTable extends Migration
      */
     public function down()
     {
-        Schema::drop('audit_timeclock');
+        Schema::drop('audit__timeclocks');
     }
 }
