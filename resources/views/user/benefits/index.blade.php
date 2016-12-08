@@ -37,7 +37,7 @@
                         
                         <form>
                             Health Insurance Carrier:
-                            <select>
+                            <select name="health">
                                 <option value="Blue Shield HMO">Blue Shield Health Care HMO</option>
                                 <option value="Blue Shield PPO">Blue Shield Health Care PPO</option>
                                 <option value="Blue Cross HMO">Blue Cross Health Care HMO</option>
@@ -47,28 +47,25 @@
                             </select><br><br>
                             
                             Vision Carrier:
-                            <select>
+                            <select name="vision">
                                 <option value="VSP">VSP Vision</option>
                             </select><br><br>
                             
                             Dental Carrier:
-                            <select>
+                            <select name="dental">
                                 <option value="CIGNA HMO">Cigna Dental HMO</option>
                                 <option value="Delta">Delta Dental</option>
                             </select><br><br>
                             
                             Life Carrier:
-                            <select>
+                            <select name="life">
                                 <option value="MetLife">MetLife Life Insurance</option>
                             </select><br><br>
                             
                             Retirement Carrier:
-                            <select>
+                            <select name="retirement">
                                 <option value="Fidelity">Fidelity</option>
                             </select><br><br>
-                            
-                            Expiration Date:
-                            <input type="text" name="Expiration Date" value="5/21/2017" readonly><br><br>
                             
                             Beneficiaries:<br>
                             Dependent #1:
@@ -109,7 +106,10 @@
                                 <option value="spouse4">Spouse</option>
                                 <option value="child4">Child</option>
                                 <option value="other4">Other</option>
-                            </select><br>
+                            </select><br><br>
+                            
+                            Expiration Date:
+                            <input type="text" name="Expiration Date" value="5/21/2017" readonly><br><br>
                             
                             <input type="submit" value="Submit">
                         </form>

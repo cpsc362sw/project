@@ -91,6 +91,47 @@ class UserController extends Controller
     }
     
     public function postEditBenefits() {
+    	# all the values being received from the view
+    	$health = $_POST['health'];
+    	$vision = $_POST['vision'];
+    	$dental = $_POST['dental'];
+    	$life = $_POST['life'];
+    	$retirement = $_POST['retirement'];
+    	$first_1 = $_POST['first_1'];
+    	$last_1 = $_POST['last_1'];
+    	$relation_1 = $_POST['relation_1'];
+    	$first_2 = $_POST['first_2'];
+    	$last_2 = $_POST['last_2'];
+    	$relation_2 = $_POST['relation_2'];
+    	$first_3 = $_POST['first_3'];
+    	$last_3 = $_POST['last_3'];
+    	$relation_3 = $_POST['relation_3'];
+    	$first_4 = $_POST['first_4'];
+    	$last_4 = $_POST['last_4'];
+    	$relation_4 = $_POST['relation_4'];
+    	
+    	# storing values into the database
+    	$entry = new Benefits;
+    	$user = Auth::user();
+    	
+    	$entry->user_id = $user->id;
+    	$entry->health = $health;
+    	$entry->vision = $vision;
+    	$entry->dental = $dental;
+    	$entry->life = $life;
+    	$entry->retirement = $retirement;
+    	$entry->first_1 = $first_1;
+    	$entry->last_1 = $last_1;
+    	$entry->relation_1 = $relation_1;
+    	$entry->first_2 = $first_2;
+    	$entry->last_2 = $last_2;
+    	$entry->relation_2 = $relation_2;
+    	$entry->first_3 = $first_3;
+    	$entry->last_3 = $last_3;
+    	$entry->relation_3 = $relation_3;
+    	$entry->first_4 = $first_4;
+    	$entry->last_4 = $last_4;
+    	$entry->relation_4 = $relation_4;
     	
     	return view('user.index');
     }
