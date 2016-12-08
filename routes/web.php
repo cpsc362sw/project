@@ -84,6 +84,11 @@ Route::group(['middleware' => ['auth']], function() {
             'uses' => 'AdminController@getTimeClockView'
         ]);
 
+        Route::get('/timeclock/audit/{id}', [
+            'as'=> 'admin.timeclock.audit',
+            'uses' => 'AdminController@getTimeClockAudit'
+        ]);
+
         # payroll landing page
         Route::get('/reports', [
             'as'=> 'admin.reports',

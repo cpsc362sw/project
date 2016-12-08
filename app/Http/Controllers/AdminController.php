@@ -99,13 +99,14 @@ class AdminController extends Controller
     }
 
     public function getCalendar() {
-
         return view('admin.calendar.index');
     }
 
 
     public function getTimeClock() {
-        return view('admin.timeclock.index');
+        $users = User::where('role_id', '=', '3')->get();
+        return view('admin.timeclock.index')
+            ->with('users', $users);
     }
 
     public function getTimeClockView($id) {
@@ -116,7 +117,23 @@ class AdminController extends Controller
             ->with('user', $user)
             ->with('entries', $entries);
     }
-    
+
+    public function getTimeClockAudit($id) {
+        $user = User::where('id', '=', $id)->first();
+        $entries = $user->getTimeEntries();
+
+        return view('admin.timeclock.audit')
+            ->with('user', $user)
+            ->with('entries', $entries);
+    }
+
+    public function postTimeClock() {
+        $id = ($_POST['id']);
+
+        return redirect('admin/timeclock/audit/' . $id);
+    }
+
+    /*
     public function postTimeClock() {
     	# retrieves and stores the action value from the post data
     	$action = ($_POST['action']);
@@ -142,9 +159,5 @@ class AdminController extends Controller
     	
     	return view('admin.timeclock.index')->withSuccess("Time clocked successfully!");
     }
-    
-    public function getReports() {
-
-        return view('admin.reports.index');
-    }
+    */
 }
