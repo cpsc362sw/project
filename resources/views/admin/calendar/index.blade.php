@@ -6,30 +6,58 @@
     </style>
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-10">
                 <div class="panel panel-default">
                     <div class="panel-heading"><b>Administrative</b> Dashboard <i class="fa fa-angle-right" aria-hidden="true"></i> Create Event</div>
                     <div class="panel-body">
+
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
+                        @if (count(@$success) > 0)
+                            <div class="alert alert-success" style="text-align: center;">
+                                <strong>Success!</strong><br><br>
+                                <label>{{ @$success }}</label>
+                            </div>
+                        @endif
+
+                        <label><strong>Current Events</strong></label>
+
+                        @if (count($events) > 0)
+                            <div class="form-group">
+                                @foreach ($events as $event)
+                                    <div style="width: 100%; margin: 10px;">
+                                        <form class="form-horizontal" method="post" action="{{ url('admin/calendar/update/'.$event->id) }}">
+                                            {{ csrf_field() }}
+                                            <label for="title" class="control-label col-md-1" style="font-size:16px">Event: </label>
+                                            <input name="title" value="{{ $event->title }}" placeholder="Title" style="height: 36px;">
+                                            <input name="date" value="{{ $event->date }}" placeholder="Date" style="height: 36px;">
+                                            <input name="description" value="{{ $event->descrption }}" placeholder="Description" style="height: 36px;">
+                                            <button type="submit" class="btn btn-success">Update</button>
+                                            <a class="btn btn-danger" href="{{ url('admin/calendar/delete/'.$event->id) }}">
+                                                <i class="fa fa-trash-o fa-lg"></i> Delete</a>
+                                        </form>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @else
+                            <div class="form-group">
+                                <label>No events currently exist.</label>
+                            </div>
+                        @endif
+
+                        <div style="width:100%; border-bottom: 1px solid #eee"></div>
+                        <label><strong>Create New</strong></label>
                         <form class="form-horizontal" method="post" action="{{ url('admin/calendar/') }}">
                             {{ csrf_field() }}
-
-                            @if (count($errors) > 0)
-                                <div class="alert alert-danger">
-                                    <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif
-
-                            @if (count(@$success) > 0)
-                                <div class="alert alert-success" style="text-align: center;">
-                                    <strong>Success!</strong><br><br>
-                                    <label>{{ @$success }}</label>
-                                </div>
-                            @endif
 
                             <div class="form-group">
                                 <label for="date" class="col-md-4 control-label">Date of Event:</label>

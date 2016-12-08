@@ -47,7 +47,7 @@
 
 
 // buttons
-.btn:hover { background: #cbe8f5; }
+.btn:hover:not(.btn-success):not(.btn-danger) { background: #cbe8f5; }
 
 .edit {
   padding: 3px;

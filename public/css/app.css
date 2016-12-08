@@ -8000,7 +8000,7 @@ button.close {
 .form-block {
   margin: 10px 15px; }
 
-.btn:hover {
+.btn:hover:not(.btn-success):not(.btn-danger) {
   background: #cbe8f5; }
 
 .edit {
@@ -8245,7 +8245,7 @@ input[type=file] {
 .form-block {
   margin: 10px 15px; }
 
-.btn:hover {
+.btn:hover:not(.btn-success):not(.btn-danger) {
   background: #cbe8f5; }
 
 .edit {

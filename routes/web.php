@@ -78,8 +78,18 @@ Route::group(['middleware' => ['auth']], function() {
         ]);
 
         Route::post('/calendar', [
-            'as' => 'admin.calendar',
+            'as' => 'admin.calendar.post',
             'uses' => 'AdminController@postCalendar'
+        ]);
+
+        Route::post('/calendar/update/{id}', [
+            'as' => 'admin.calendar.update',
+            'uses' => 'AdminController@postCalendarUpdate'
+        ]);
+
+        Route::get('/calendar/delete/{id}', [
+            'as' => 'admin.calendar.delete',
+            'uses' => 'AdminController@postCalendarDelete'
         ]);
 
         # timeclock landing page

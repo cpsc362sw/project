@@ -13,16 +13,6 @@ use App\Http\Requests;
 
 class AdminController extends Controller
 {
-
-    /**
-     * Make the index into a pure dashboard with just links, we will have a users page etc.
-     * user will have a static table with the information which will include basic info.
-     * Alternate table row colors, with button hidden, when hover adjust color and show buttons.
-     *
-     * Add filtering.
-     *
-     */
-
     /**
      * @return $this
      */
@@ -132,7 +122,10 @@ class AdminController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getCalendar() {
-        return view('admin.calendar.index');
+        $events = CalendarEvent::getEvents();
+
+        return view('admin.calendar.index')
+            ->with('events', $events);
     }
 
     /**
@@ -140,8 +133,15 @@ class AdminController extends Controller
      *
      * @return $this
      */
-    public function postCalendar() {
+    public function postCalendar(Request $request) {
         $user = Auth::user();
+
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'date' => 'required|date',
+            'description' => 'max:255'
+        ]);
+
         $event = new calendarEvent;
 
         $event->user_id = $user->id;
@@ -150,15 +150,48 @@ class AdminController extends Controller
         $event->description = $_POST['description'];
         $event->save();
 
+        $events = CalendarEvent::getEvents();
+
         return view('admin.calendar.index')
-            ->with('success', 'Calendar Event: '. $_POST['title'] . ' on ' . $_POST['date'] . " created");
+            ->with('success', 'Calendar Event: '. $_POST['title'] . ' on ' . $_POST['date'] . " created")
+            ->with('events', $events);
+    }
+
+    public function postCalendarUpdate($id, Request $request) {
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'date' => 'required|date',
+            'description' => 'max:255'
+        ]);
+
+        $event = CalendarEvent::where('id', '=', $id)->first();
+
+        if ($event) {
+            $event->title = $_POST['title'];
+            $event->description = $_POST['description'];
+            $event->date = $_POST['date'];
+            $event->save();
+        }
+
+        $events = CalendarEvent::getEvents();
+
+        return view('admin.calendar.index')
+            ->with('success', "Calendar Event Created.")
+            ->with('events', $events);
+    }
+
+    public function postCalendarDelete($id) {
+        $event = CalendarEvent::find($id);
+        $event->delete();
+
+        return redirect('admin/calendar');
     }
 
     /**
      * ajax request to retrieve events
      */
     public function getEventsAjax() {
-        $events = CalendarEvent::getEvents();
+        $events = CalendarEvent::getEventsAjax();
 
         $item = 0;
          foreach ($events as $date => $title) {
