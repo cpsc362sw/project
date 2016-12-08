@@ -31,6 +31,11 @@
                     </div>
                 </div>
             </div>
+            @if (session('status'))
+                <div class="alert alert-success">
+                    {{ session('status') }}
+                </div>
+            @endif
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading"><b>User</b> Dashboard <i class="fa fa-angle-right" aria-hidden="true"></i> Timeclock <i class="fa fa-angle-right" aria-hidden="true"></i> Edit</div>
@@ -54,7 +59,7 @@
                                             <input type="hidden" name="date" value="{{ $day }}" />
                                             <input value="{{ isset($entry->time) ? date('H:i:s', strtotime($entry->time)) : '00:00:00' }}" style="border:none; width:75px;" disabled="disabled" />
                                             <input name="time" value="{{ isset($entry->time) ? date('H:i:s', strtotime($entry->time)) : '00:00:00' }}" />
-                                            <button class="btn btn-block" style="width:90px;display:inline;">Submit&nbsp;<i class="fa fa-pencil"></i></button>
+                                            <button class="btn btn-block" style="width:150px;display:inline;">Submit Change&nbsp;<i class="fa fa-pencil"></i></button>
                                         </form>
                                     </td>
                                 </tr>

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 use App\Timeclock;
+use App\Audit_Timeclock;
 use App\User;
 use App\FileUtilities;
 
@@ -50,33 +51,36 @@ class UserController extends Controller
     }
 
     public function postEditEntryTime() {
-        #dd($_POST);
+        $date = $_POST['date'];
         $id = $_POST['id'];
         $time = $_POST['time'];
         $user = Auth::user();
-        $entry = new Timeclock;
-        $date = $_POST['date'];
 
-        if ($id == NULL) {
-            $entry->user_id = $user->id;
-            $entry->action = $_POST['type'];
-            $newDate = preg_replace('/(\d{2})-(\d{2})-(\d{4})/', '$3-$1-$2', $date);
-            $entry->time = $newDate . " " . $time;
+        // Create db entry with timeclock audit
+        $entry = new Audit_Timeclock;
+        $entry->user_id = $user->id;
+        $entry->action = $_POST['type'];
+        $newDate = preg_replace('/(\d{2})-(\d{2})-(\d{4})/', '$3-$1-$2', $date);
+        $entry->time = $newDate . " " . $time;
 
-            $entry->save();
+        $entry->save();
 
-            # TODO: Save entry in new table for admin auditing instead of updating/adding entries
-        } else {
+        /*}
+            // update existing record
+            else {
             $entry = Timeclock::where('id', '=', $id)->first();
+            $newEntry = new Audit_Timeclock;
 
             $date = date('Y-m-d', strtotime($entry->time));
             $newTime = date('H:i:s', strtotime($time));
 
-            $entry->time = $date . " " . $newTime;
-            $entry->save();
-        }
+            $newEntry->time = $date . " " . $newTime;
+            $newEntry->save();
+        }*/
 
-        return redirect('user/timeclock');
+        // TODO: Fix status message style in view
+        return redirect('user/timeclock')
+            ->with('status', 'Correction submitted!');
     }
     
     public function getEditBenefits() {
