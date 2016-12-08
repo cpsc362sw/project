@@ -66,6 +66,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Timeclock', 'user_id', 'id');
     }
 
+    public function timeAuditEntries() {
+        return $this->hasMany('App\Audit_Timeclock', 'user_id', 'id');
+    }
+
     /**
      * Returns our display_name
      *
@@ -172,4 +176,13 @@ class User extends Authenticatable
 
          return $entries;
      }
+
+    public function getTimeAuditEntries() {
+        // Order by Month-Day
+        $entries = $this->timeAuditEntries->groupBy(function($date) {
+            return date('m-d-Y', strtotime($date->time));
+        });
+
+        return $entries;
+    }
 }

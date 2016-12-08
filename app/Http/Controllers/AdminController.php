@@ -120,7 +120,8 @@ class AdminController extends Controller
 
     public function getTimeClockAudit($id) {
         $user = User::where('id', '=', $id)->first();
-        $entries = $user->getTimeEntries();
+        $entries = $user->getTimeAuditEntries();
+        $oldEntries = $user->getTimeEntries();
 
         return view('admin.timeclock.audit')
             ->with('user', $user)
