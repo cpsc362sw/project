@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Audit_Timeclock;
+use App\Timeclock;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
@@ -223,11 +225,33 @@ class AdminController extends Controller
         $user = User::where('id', '=', $id)->first();
         $entries = $user->getTimeAuditEntries();
         $oldEntries = $user->getTimeEntries();
-        #dd($oldEntries);
+
         return view('admin.timeclock.audit')
             ->with('user', $user)
             ->with('entries', $entries)
             ->with('oldEntries', $oldEntries);
+    }
+
+    public function postTimeClockAudit(Request $request) {
+        $id_audit = $request->id_audit;
+        $id_original = $request->id_original;
+        $time = $request->time;
+        $time_old = $request->time_old;
+        $result = $request->result;
+
+        $auditEntry = Audit_Timeclock::all()->where('id', '=', $id_audit)->first();
+        $originalEntry = Timeclock::all()->where('id', '=', $id_original)->first();
+
+        # dd($originalEntry);
+
+        if ($result == "replace") {
+            $originalEntry->time = $auditEntry->time;
+            $originalEntry->save();
+            $auditEntry->delete();
+        } else {
+            $auditEntry->delete();
+        }
+        return redirect('admin/timeclock/');
     }
 
     public function postTimeClock() {

@@ -99,7 +99,7 @@ Route::group(['middleware' => ['auth']], function() {
         ]);
         
         Route::post('/timeclock/', [
-        		'as'=> 'admin.timeclock',
+        		'as'=> 'admin.timeclock.post',
         		'uses' => 'AdminController@postTimeClock'
         ]);
 
@@ -113,7 +113,11 @@ Route::group(['middleware' => ['auth']], function() {
             'uses' => 'AdminController@getTimeClockAudit'
         ]);
 
-        # reports landing page
+        Route::post('/timeclock/audit/{id}', [
+            'as'=> 'admin.timeclock.audit.post',
+            'uses' => 'AdminController@postTimeClockAudit'
+        ]);
+        
         Route::get('/reports', [
             'as'=> 'admin.reports',
             'uses'=> 'AdminController@getReports'
