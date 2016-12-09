@@ -269,6 +269,8 @@ class AdminController extends Controller
     }
 
     public function getAttendanceReport() {
+        $
 
+        return view('admin.reports.attendance');
     }
 }
