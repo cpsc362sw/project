@@ -35,16 +35,16 @@
                     <div class="panel-heading"><b>User</b> Dashboard <i class="fa fa-angle-right" aria-hidden="true"></i> Benefits <i class="fa fa-angle-right" aria-hidden="true"></i> Edit</div>
                     <div class="panel-body" style="font-size: 120%;">
                         
-                        <form method="post" action="{{ url('user/benefits') }}">
+                        <form method="post"action="{{ url('user/benefits') }}">
                             {{ csrf_field() }}
                             Health Insurance Carrier:
                             <select name="health">
-                                <option value="Blue Shield HMO">Blue Shield Health Care HMO</option>
-                                <option value="Blue Shield PPO">Blue Shield Health Care PPO</option>
-                                <option value="Blue Cross HMO">Blue Cross Health Care HMO</option>
-                                <option value="Blue Cross PPO">Blue Cross Health care PPO</option>
-                                <option value="Kaiser HMO">Kaiser Health Care HMO</option>
-                                <option value="CIGNA HMO">Cigna Dental HMO</option>
+                                <option value="Blue Shield HMO"<?php if($benefits->health == "Blue Shield HMO"){ echo "selected";}?>>Blue Shield Health Care HMO</option>
+                                <option value="Blue Shield PPO"<?php if($benefits->health == "Blue Shield PPO"){ echo "selected";}?>>Blue Shield Health Care PPO</option>
+                                <option value="Blue Cross HMO"<?php if($benefits->health == "Blue Cross HMO"){ echo "selected";}?>>Blue Cross Health Care HMO</option>
+                                <option value="Blue Cross PPO"<?php if($benefits->health == "Blue Cross PPO"){ echo "selected";}?>>Blue Cross Health care PPO</option>
+                                <option value="Kaiser HMO"<?php if($benefits->health == "Kaiser HMO"){ echo "selected";}?>>Kaiser Health Care HMO</option>
+                                <option value="CIGNA HMO"<?php if($benefits->health == "CIGNA HMO"){ echo "selected";}?>>Cigna Dental HMO</option>
                             </select><br><br>
                             
                             Vision Carrier:
@@ -54,8 +54,8 @@
                             
                             Dental Carrier:
                             <select name="dental">
-                                <option value="CIGNA HMO">Cigna Dental HMO</option>
-                                <option value="Delta">Delta Dental</option>
+                                <option value="CIGNA HMO"<?php if($benefits->dental == "CIGNA HMO"){ echo "selected";}?>>Cigna Dental HMO</option>
+                                <option value="Delta"<?php if($benefits->dental == "Delta"){ echo "selected";}?>>Delta Dental</option>
                             </select><br><br>
                             
                             Life Carrier:
@@ -70,43 +70,43 @@
                             
                             Beneficiaries:<br>
                             Dependent #1:
-                            <input type="text" name="firstname1" placeholder="First Name">
-                            <input type="text" name="lastname1" placeholder="Last Name">
+                            <input type="text" name="firstname1" placeholder="First Name" value="{{ @$benefits->first_1 }}">
+                            <input type="text" name="lastname1" placeholder="Last Name"value="{{ @$benefits->last_1 }}">
                             Relationship:
                             <select name="relation1">
-                                <option value="spouse1">Spouse</option>
-                                <option value="child1">Child</option>
-                                <option value="other1">Other</option>
+                                <option value="spouse1"<?php if($benefits->relation_1 == "spouse1"){ echo "selected";}?>>Spouse</option>
+                                <option value="child1"<?php if($benefits->relation_1 == "child1"){ echo "selected";}?>>Child</option>
+                                <option value="other1"<?php if($benefits->relation_1 == "other1"){ echo "selected";}?>>Other</option>
                             </select><br>
                             
                             Dependent #2:
-                            <input type="text" name="firstname2" placeholder="First Name">
-                            <input type="text" name="lastname2" placeholder="Last Name">
+                            <input type="text" name="firstname2" placeholder="First Name" value="{{ @$benefits->first_2 }}">
+                            <input type="text" name="lastname2" placeholder="Last Name" value="{{ @$benefits->last_2 }}">
                             Relationship:
                             <select name="relation2">
-                                <option value="spouse2">Spouse</option>
-                                <option value="child2">Child</option>
-                                <option value="other2">Other</option>
+                                <option value="spouse2"<?php if($benefits->relation_2 == "spouse2"){ echo "selected";}?>>Spouse</option>
+                                <option value="child2"<?php if($benefits->relation_2 == "child2"){ echo "selected";}?>>Child</option>
+                                <option value="other2"<?php if($benefits->relation_2 == "other2"){ echo "selected";}?>>Other</option>
                             </select><br>
                             
                             Dependent #3:
-                            <input type="text" name="firstname3" placeholder="First Name">
-                            <input type="text" name="lastname3" placeholder="Last Name">
+                            <input type="text" name="firstname3" placeholder="First Name" value="{{ @$benefits->first_3 }}">
+                            <input type="text" name="lastname3" placeholder="Last Name" value="{{ @$benefits->last_3 }}">
                             Relationship:
                             <select name="relation3">
-                                <option value="spouse3">Spouse</option>
-                                <option value="child3">Child</option>
-                                <option value="other3">Other</option>
+                                <option value="spouse3"<?php if($benefits->relation_3 == "spouse3"){ echo "selected";}?>>Spouse</option>
+                                <option value="child3"<?php if($benefits->relation_3 == "child3"){ echo "selected";}?>>Child</option>
+                                <option value="other3"<?php if($benefits->relation_3 == "other3"){ echo "selected";}?>>Other</option>
                             </select><br>
                             
                             Dependent #4:
-                            <input type="text" name="firstname4" placeholder="First Name">
-                            <input type="text" name="lastname4" placeholder="Last Name">
+                            <input type="text" name="firstname4" placeholder="First Name" value="{{ @$benefits->first_4 }}">
+                            <input type="text" name="lastname4" placeholder="Last Name" value="{{ @$benefits->last_4 }}">
                             Relationship:
                             <select name="relation4">
-                                <option value="spouse4">Spouse</option>
-                                <option value="child4">Child</option>
-                                <option value="other4">Other</option>
+                                <option value="spouse4"<?php if($benefits->relation_4 == "spouse4"){ echo "selected";}?>>Spouse</option>
+                                <option value="child4"<?php if($benefits->relation_4 == "child4"){ echo "selected";}?>>Child</option>
+                                <option value="other4"<?php if($benefits->relation_4 == "other4"){ echo "selected";}?>>Other</option>
                             </select><br><br>
                             
                             Expiration Date:
