@@ -43,22 +43,22 @@
                         @foreach($entries as $day => $group)
                         <div class="time-edit-box">
                             <label class="large-title">Day: {{ $day }}</label>
-                            <table>
+                            <table class="table-striped table-bordered table-hover">
                             @for ($i = 0; $i < 4; $i++)
                                 @php (isset($group[$i]->id) ? $entry = $group[$i] : $entry = NULL)
                                 <tr style="line-height: 3em;">
-                                    <td style="width:150px; font-weight:600;">
-                                        <i class="fa fa-circle-thin" aria-hidden="true" style="font-size: 50%;"></i>
+                                    <td style="width:150px; font-weight:600; padding-left: 5px;">
 &nbsp;&nbsp;                                      {{ ucwords(str_replace('_', ' ', $entryType[$i])) }}:
                                     </td>
-                                    <td style="width:500px;">
+                                    <td style="width:500px; padding-left: 25px;">
                                         <label style="border:none; width:75px;">{{ isset($entry->time) ? date('H:i:s', strtotime($entry->time)) : '00:00:00' }}</label>
                                     </td>
                                 </tr>
                             @endfor
 
                             <tr>
-                                <td style="width:250px;font-weight: 600;">Time Worked: {{ App\Timeclock::getTimeDiff($group) }}</td>
+                                <td style="width:250px;font-weight: 600;">Time Worked: </td>
+                                <td style="padding-left: 25px;">{{ App\Timeclock::getTimeDiff($group) }}</td>
                             </tr>
                             </table>
                         </div>
