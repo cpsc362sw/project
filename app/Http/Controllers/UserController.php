@@ -102,18 +102,18 @@ class UserController extends Controller
     	$dental = $_POST['dental'];
     	$life = $_POST['life'];
     	$retirement = $_POST['retirement'];
-    	$first_1 = $_POST['first_1'];
-    	$last_1 = $_POST['last_1'];
-    	$relation_1 = $_POST['relation_1'];
-    	$first_2 = $_POST['first_2'];
-    	$last_2 = $_POST['last_2'];
-    	$relation_2 = $_POST['relation_2'];
-    	$first_3 = $_POST['first_3'];
-    	$last_3 = $_POST['last_3'];
-    	$relation_3 = $_POST['relation_3'];
-    	$first_4 = $_POST['first_4'];
-    	$last_4 = $_POST['last_4'];
-    	$relation_4 = $_POST['relation_4'];
+    	$first_1 = $_POST['firstname1'];
+    	$last_1 = $_POST['lastname1'];
+    	$relation_1 = $_POST['relation1'];
+    	$first_2 = $_POST['firstname2'];
+    	$last_2 = $_POST['lastname2'];
+    	$relation_2 = $_POST['relation2'];
+    	$first_3 = $_POST['firstname3'];
+    	$last_3 = $_POST['lastname3'];
+    	$relation_3 = $_POST['relation3'];
+    	$first_4 = $_POST['firstname4'];
+    	$last_4 = $_POST['lastname4'];
+    	$relation_4 = $_POST['relation4'];
     	
     	# storing values into the database
     	$benefits = new Benefit;

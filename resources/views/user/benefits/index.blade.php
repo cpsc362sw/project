@@ -35,7 +35,8 @@
                     <div class="panel-heading"><b>User</b> Dashboard <i class="fa fa-angle-right" aria-hidden="true"></i> Benefits <i class="fa fa-angle-right" aria-hidden="true"></i> Edit</div>
                     <div class="panel-body" style="font-size: 120%;">
                         
-                        <form>
+                        <form method="post" action="{{ url('user/benefits') }}">
+                            {{ csrf_field() }}
                             Health Insurance Carrier:
                             <select name="health">
                                 <option value="Blue Shield HMO">Blue Shield Health Care HMO</option>
@@ -72,7 +73,7 @@
                             <input type="text" name="firstname1" placeholder="First Name">
                             <input type="text" name="lastname1" placeholder="Last Name">
                             Relationship:
-                            <select>
+                            <select name="relation1">
                                 <option value="spouse1">Spouse</option>
                                 <option value="child1">Child</option>
                                 <option value="other1">Other</option>
@@ -82,7 +83,7 @@
                             <input type="text" name="firstname2" placeholder="First Name">
                             <input type="text" name="lastname2" placeholder="Last Name">
                             Relationship:
-                            <select>
+                            <select name="relation2">
                                 <option value="spouse2">Spouse</option>
                                 <option value="child2">Child</option>
                                 <option value="other2">Other</option>
@@ -92,7 +93,7 @@
                             <input type="text" name="firstname3" placeholder="First Name">
                             <input type="text" name="lastname3" placeholder="Last Name">
                             Relationship:
-                            <select>
+                            <select name="relation3">
                                 <option value="spouse3">Spouse</option>
                                 <option value="child3">Child</option>
                                 <option value="other3">Other</option>
@@ -102,7 +103,7 @@
                             <input type="text" name="firstname4" placeholder="First Name">
                             <input type="text" name="lastname4" placeholder="Last Name">
                             Relationship:
-                            <select>
+                            <select name="relation4">
                                 <option value="spouse4">Spouse</option>
                                 <option value="child4">Child</option>
                                 <option value="other4">Other</option>

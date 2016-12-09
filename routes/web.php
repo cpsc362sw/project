@@ -147,7 +147,7 @@ Route::group(['middleware' => ['auth']], function() {
         # user benefits post
         Route::post('/benefits', [
         		'as' => 'user.benefits',
-        		'user' => 'UserController@postEditBenefits'
+        		'uses' => 'UserController@postEditBenefits'
         ]);
         
         # user get edit time clock
