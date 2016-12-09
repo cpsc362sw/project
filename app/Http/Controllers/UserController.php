@@ -82,9 +82,11 @@ class UserController extends Controller
      */
     public function getEditBenefits() {
         $user = Auth::user();
+        $benefits = Benefit::where('user_id', '=', $user->id)->first();
 
         return view('user.benefits.index')
-        ->with('user', $user);
+        ->with('user', $user)
+        ->with('benefits', $benefits);
     }
     
     public function postEditBenefits() {
