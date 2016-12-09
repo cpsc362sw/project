@@ -267,3 +267,29 @@ input[type=file] {
   text-overflow: ellipsis;
   width: 220px;
 }
+
+// for reports
+.pills {
+  padding: 5px;
+  margin: 5px;
+  background: rgb(71, 162, 208);
+  color: white;
+  border-radius: 5px;
+
+  a {
+    color: white;
+    padding: 0 !important;
+  }
+  a:hover:not(.disabled) {
+    background: rgb(31, 140, 208) !important
+  }
+}
+.pills:hover:not(.disabled) { background: rgb(31, 140, 208) !important }
+.pills:not(.disabled) {
+  cursor: pointer;
+  cursor: hand;
+}
+
+.disabled {
+  background: #EEEEEE;
+}

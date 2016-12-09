@@ -113,10 +113,16 @@ Route::group(['middleware' => ['auth']], function() {
             'uses' => 'AdminController@getTimeClockAudit'
         ]);
 
-        # payroll landing page
+        # reports landing page
         Route::get('/reports', [
             'as'=> 'admin.reports',
             'uses'=> 'AdminController@getReports'
+        ]);
+
+        # reports landing page
+        Route::get('/reports/attendance', [
+            'as'=> 'admin.reports',
+            'uses'=> 'AdminController@getAttendanceReport'
         ]);
 
         # payroll landing page

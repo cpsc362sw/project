@@ -8199,6 +8199,28 @@ input[type=file] {
   text-overflow: ellipsis;
   width: 220px; }
 
+.pills {
+  padding: 5px;
+  margin: 5px;
+  background: #47a2d0;
+  color: white;
+  border-radius: 5px; }
+  .pills a {
+    color: white;
+    padding: 0 !important; }
+  .pills a:hover:not(.disabled) {
+    background: #1f8cd0 !important; }
+
+.pills:hover:not(.disabled) {
+  background: #1f8cd0 !important; }
+
+.pills:not(.disabled) {
+  cursor: pointer;
+  cursor: hand; }
+
+.disabled {
+  background: #EEEEEE; }
+
 /**
  NOTE: Use & when nesting elements, it will always refer to the parent.
        Important for when we have multiple selectors we are applying styles to.
@@ -8443,5 +8465,27 @@ input[type=file] {
   overflow: hidden;
   text-overflow: ellipsis;
   width: 220px; }
+
+.pills {
+  padding: 5px;
+  margin: 5px;
+  background: #47a2d0;
+  color: white;
+  border-radius: 5px; }
+  .pills a {
+    color: white;
+    padding: 0 !important; }
+  .pills a:hover:not(.disabled) {
+    background: #1f8cd0 !important; }
+
+.pills:hover:not(.disabled) {
+  background: #1f8cd0 !important; }
+
+.pills:not(.disabled) {
+  cursor: pointer;
+  cursor: hand; }
+
+.disabled {
+  background: #EEEEEE; }
 
 /*# sourceMappingURL=app.css.map */

@@ -263,4 +263,12 @@ class AdminController extends Controller
     	return view('admin.timeclock.index')->withSuccess("Time clocked successfully!");
     }
     */
+
+    public function getReports() {
+        return view('admin.reports.index');
+    }
+
+    public function getAttendanceReport() {
+
+    }
 }
