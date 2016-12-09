@@ -23,10 +23,16 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
+                                <div class="col-md-6 col-md-offset-3">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i> View Corrections </button>
+                                    <button class="btn btn-primary" type="button" id="dash">Back to Dashboard</button>
                                 </div>
                             </div>
+                            <script>
+                                $("#dash").click(function() {
+                                    window.location.href = "/admin";
+                                });
+                            </script>
                         </form>
                     </div>
                 </div>

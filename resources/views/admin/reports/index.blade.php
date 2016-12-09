@@ -17,6 +17,16 @@
                                 <li class="pills disabled">Coming Soon...</li>
                             </ul>
                         </div>
+                        <div class="form-group">
+                            <div style="margin-top: 25px;">
+                                <button class="btn btn-primary" type="button" id="dash">Back to Dashboard</button>
+                            </div>
+                        </div>
+                        <script>
+                            $("#dash").click(function() {
+                                window.location.href = "/admin";
+                            });
+                        </script>
                     </div>
                 </div>
             </div>

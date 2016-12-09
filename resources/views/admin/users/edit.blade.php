@@ -46,10 +46,17 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
+                                <div class="col-md-6 col-md-offset-3">
                                     <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save Changes</button>
+                                    <button class="btn btn-primary" type="button" id="users">Back to Users</button>
                                 </div>
                             </div>
+
+                            <script>
+                                $("#users").click(function() {
+                                    window.location.href = "/admin/users";
+                                });
+                            </script>
                         </form>
                     </div>
                 </div>

@@ -12,7 +12,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <table class="table table-striped table-hover">
+                    <table class="table table-striped table-hover table-bordered">
                         <thead class="thead-default">
                             <tr>
                                 <th>Name</th>
@@ -40,6 +40,17 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div style="clear:both;"></div>
+                    <div class="form-group" style="height:50px; margin-top: 25px;">
+                        <div style="margin-left:15px;">
+                            <button class="btn btn-primary" type="button" id="dash">Back to Dashboard</button>
+                        </div>
+                    </div>
+                    <script>
+                        $("#dash").click(function() {
+                            window.location.href = "/admin";
+                        });
+                    </script>
                 </div>
             </div>
         </div>

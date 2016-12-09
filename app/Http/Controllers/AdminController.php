@@ -292,9 +292,34 @@ class AdminController extends Controller
         return view('admin.reports.index');
     }
 
+    /**
+     * show what users clocked in, or did not.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getAttendanceReport() {
-        $
+        $present = [];
+        $absent = [];
+        $users = User::where('role_id', '=', 3)->get();
+        $entries = $_entries = Timeclock::whereRaw('Date(time) = CURDATE()')->get();
 
-        return view('admin.reports.attendance');
+        foreach ($users as $user) {
+            $clockedIn = false;
+
+            foreach ($entries as $entry) {
+                if ($entry->user_id == $user->id && $entry->action == 'time_in') {
+                    $present[] = ['user' => $user->name, 'time' => $entry->time];
+                    $clockedIn = true;
+                }
+            }
+
+            if (!$clockedIn) {
+                $absent[] = ['user' => $user->name, 'time' => $entry->time];
+            }
+        }
+
+        return view('admin.reports.attendance')
+            ->with('present', $present)
+            ->with('absent', $absent);
     }
 }

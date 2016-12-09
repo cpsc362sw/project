@@ -53,7 +53,20 @@
                                 </table>
                             </div>
                         @endforeach
-                        <a href="/user" class="btn btn-block">Back</a>
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-3">
+                                <button class="btn btn-primary" type="button" id="dash">Back to Dashboard</button>
+                                <button class="btn btn-primary" type="button" id="audit">Back to Audit</button>
+                            </div>
+                        </div>
+                        <script>
+                            $("#audit").click(function() {
+                                window.location.href = "/admin/timeclock";
+                            });
+                            $("#dash").click(function() {
+                                window.location.href = "/admin";
+                            });
+                        </script>
                     </div>
                 </div>
             </div>
