@@ -40,7 +40,7 @@
                                             <label for="title" class="control-label col-md-1" style="font-size:16px">Event: </label>
                                             <input name="title" value="{{ $event->title }}" placeholder="Title" style="height: 36px;">
                                             <input name="date" value="{{ $event->date }}" placeholder="Date" style="height: 36px;">
-                                            <input name="description" value="{{ $event->descrption }}" placeholder="Description" style="height: 36px;">
+                                            <input name="description" value="{{ $event->description }}" placeholder="Description" style="height: 36px;">
                                             <button type="submit" class="btn btn-success">Update</button>
                                             <a class="btn btn-danger" href="{{ url('admin/calendar/delete/'.$event->id) }}">
                                                 <i class="fa fa-trash-o fa-lg"></i> Delete</a>
