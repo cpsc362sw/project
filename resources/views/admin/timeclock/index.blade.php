@@ -6,10 +6,10 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading"><b>Administrative</b> Dashboard
-                        <i class="fa fa-angle-right" aria-hidden="true"></i> Timeclock
+                        <i class="fa fa-angle-right" aria-hidden="true"></i> Audit
                     </div>
                     <div class="panel-body">
-                        <p>View timeclock corrections for:</p>
+                        <p>Select a user for timeclock corrections:</p>
                         <form class="form-horizontal" role="form" method="post" action="">
                             {{ csrf_field() }}
                             <div class="form-group">

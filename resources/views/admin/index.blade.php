@@ -42,8 +42,8 @@
                         <a href="{{ url('/admin/timeclock') }}">
                             <div class="col-md-6 timeclock">
                                 <label>
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                    Timeclock
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    Audit
                                 </label>
                             </div>
                         </a>
