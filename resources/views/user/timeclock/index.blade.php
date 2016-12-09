@@ -52,15 +52,7 @@
 &nbsp;&nbsp;                                      {{ ucwords(str_replace('_', ' ', $entryType[$i])) }}:
                                     </td>
                                     <td style="width:500px;">
-                                        <form method="post" action="{{ url('/user/timeclock/edit') }}">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="id" value="{{ $entry->id or NULL }}" />
-                                            <input type="hidden" name="type" value="{{ $entryType[$i] }}" />
-                                            <input type="hidden" name="date" value="{{ $day }}" />
-                                            <input value="{{ isset($entry->time) ? date('H:i:s', strtotime($entry->time)) : '00:00:00' }}" style="border:none; width:75px;" disabled="disabled" />
-                                            <input name="time" value="{{ isset($entry->time) ? date('H:i:s', strtotime($entry->time)) : '00:00:00' }}" />
-                                            <button class="btn btn-block" style="width:150px;display:inline;">Submit Change&nbsp;<i class="fa fa-pencil"></i></button>
-                                        </form>
+                                        <label style="border:none; width:75px;">{{ isset($entry->time) ? date('H:i:s', strtotime($entry->time)) : '00:00:00' }}</label>
                                     </td>
                                 </tr>
                             @endfor
