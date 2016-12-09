@@ -9,6 +9,7 @@ use App\Timeclock;
 use App\Audit_Timeclock;
 use App\User;
 use App\FileUtilities;
+use App\Benefit;
 
 class UserController extends Controller
 {
@@ -16,11 +17,15 @@ class UserController extends Controller
         $user = Auth::user();
 
         $entries = $user->getTodaysEntries();
-
+        
+        # gets the benefits table associated with the user by ID
+        $benefits = Benefit::where('user_id', '=', $user->id)->first();
+        
         return view('user.index')
             ->with('user', $user)
             ->with('today', date('m-d-Y'))
-            ->with('entries', $entries);
+            ->with('entries', $entries)
+            ->with('benefits', $benefits);
     }
     
     # user get edit time clock
@@ -111,27 +116,28 @@ class UserController extends Controller
     	$relation_4 = $_POST['relation_4'];
     	
     	# storing values into the database
-    	$entry = new Benefits;
+    	$benefits = new Benefit;
     	$user = Auth::user();
     	
-    	$entry->user_id = $user->id;
-    	$entry->health = $health;
-    	$entry->vision = $vision;
-    	$entry->dental = $dental;
-    	$entry->life = $life;
-    	$entry->retirement = $retirement;
-    	$entry->first_1 = $first_1;
-    	$entry->last_1 = $last_1;
-    	$entry->relation_1 = $relation_1;
-    	$entry->first_2 = $first_2;
-    	$entry->last_2 = $last_2;
-    	$entry->relation_2 = $relation_2;
-    	$entry->first_3 = $first_3;
-    	$entry->last_3 = $last_3;
-    	$entry->relation_3 = $relation_3;
-    	$entry->first_4 = $first_4;
-    	$entry->last_4 = $last_4;
-    	$entry->relation_4 = $relation_4;
+    	$benefits->user_id = $user->id;
+    	$benefits->health = $health;
+    	$benefits->vision = $vision;
+    	$benefits->dental = $dental;
+    	$benefits->life = $life;
+    	$benefits->retirement = $retirement;
+    	$benefits->first_1 = $first_1;
+    	$benefits->last_1 = $last_1;
+    	$benefits->relation_1 = $relation_1;
+    	$benefits->first_2 = $first_2;
+    	$benefits->last_2 = $last_2;
+    	$benefits->relation_2 = $relation_2;
+    	$benefits->first_3 = $first_3;
+    	$benefits->last_3 = $last_3;
+    	$benefits->relation_3 = $relation_3;
+    	$benefits->first_4 = $first_4;
+    	$benefits->last_4 = $last_4;
+    	$benefits->relation_4 = $relation_4;
+    	$benefits->save();
     	
     	return view('user.index');
     }
