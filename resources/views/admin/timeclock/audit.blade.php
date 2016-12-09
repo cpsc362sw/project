@@ -24,25 +24,24 @@
                                                         break;
                                                     }
                                                 }
-                                                #dd($oldEntry->where('action', '=', '$entry->action'));
                                             } else {
                                                 $oldEntry = new \App\Timeclock();
                                             }
                                         @endphp
                                         <tr style="line-height: 3em;">
-                                            <td style="width:150px; font-weight:600;">
+                                            <td style="width:200px; font-weight:600;">
                                                 <i class="fa fa-circle-thin" aria-hidden="true" style="font-size: 50%;"></i>
-                                                &nbsp;&nbsp;                                      {{ ucwords(str_replace('_', ' ', $entry->action)) }}:
+                                                    &nbsp;&nbsp;Old & New {{ ucwords(str_replace('_', ' ', $entry->action)) }}:
                                             </td>
                                             <td style="width:500px;">
-                                                <form method="post" action="{{ url('/user/timeclock/edit') }}">
+                                                <form method="post" action="">
                                                     {{ csrf_field() }}
-                                                    <input type="hidden" name="id" value="{{ $entry->id }}" />
-                                                    <input type="hidden" name="type" value="{{ $entry->action }}" />
-                                                    <input type="hidden" name="date" value="{{ $day }}" />
-                                                    <input value="{{ isset($oldEntry->time) ? date('H:i:s', strtotime($oldEntry->time)) : '00:00:00' }}" style="border:none; width:75px;" disabled="disabled" />
-                                                    <input value="{{ date('H:i:s', strtotime($entry->time)) }}" style="border:none; width:75px;" disabled />
-                                                    <button class="btn btn-block" style="width:150px;display:inline;">Accept Change&nbsp;<i class="fa fa-check-circle"></i></button>
+                                                    <input type="hidden" name="id_audit" value="{{ $entry->id }}" />
+                                                    <input type="hidden" name="id_original" value="{{ $oldEntry->id }}" />
+                                                    <input name="time_old" value="{{ isset($oldEntry->time) ? date('H:i:s', strtotime($oldEntry->time)) : '00:00:00' }}" style="border:none; width:75px;" disabled="disabled" />
+                                                    <input name="time" value="{{ date('H:i:s', strtotime($entry->time)) }}" style="border:none; width:75px;" disabled />
+                                                    <button type="submit" name="result" value="replace" class="btn btn-success" style="width:100px;display:inline;"><i class="fa fa-check-circle"></i>&nbspAccept</i></button>
+                                                    <button type="submit" name="result" value="delete" class="btn btn-danger" style="width:100px;display:inline;"><i class="fa fa-remove"></i>&nbspReject</button>
                                                 </form>
                                             </td>
                                         </tr>
