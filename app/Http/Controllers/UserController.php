@@ -70,24 +70,16 @@ class UserController extends Controller
 
         $entry->save();
 
-        /*}
-            // update existing record
-            else {
-            $entry = Timeclock::where('id', '=', $id)->first();
-            $newEntry = new Audit_Timeclock;
-
-            $date = date('Y-m-d', strtotime($entry->time));
-            $newTime = date('H:i:s', strtotime($time));
-
-            $newEntry->time = $date . " " . $newTime;
-            $newEntry->save();
-        }*/
-
         // TODO: Fix status message style in view
         return redirect('user/timeclock')
             ->with('status', 'Correction submitted!');
     }
-    
+
+    /**
+     * TODO: insert benefits if they exist
+     *
+     * @return $this
+     */
     public function getEditBenefits() {
         $user = Auth::user();
 
@@ -96,7 +88,9 @@ class UserController extends Controller
     }
     
     public function postEditBenefits() {
-    	# all the values being received from the view
+        $user = Auth::user();
+
+    	// all the values being received from the view
     	$health = $_POST['health'];
     	$vision = $_POST['vision'];
     	$dental = $_POST['dental'];
@@ -115,11 +109,17 @@ class UserController extends Controller
     	$last_4 = $_POST['lastname4'];
     	$relation_4 = $_POST['relation4'];
     	
-    	# storing values into the database
-    	$benefits = new Benefit;
-    	$user = Auth::user();
-    	
-    	$benefits->user_id = $user->id;
+
+        // grab if existing.
+        $benefits = Benefit::where("user_id", '=', $user->id)->first();
+
+        // if not create new
+        if (!$benefits) {
+            $benefits = new Benefit;
+        }
+
+        // storing values into the database
+        $benefits->user_id = $user->id;
     	$benefits->health = $health;
     	$benefits->vision = $vision;
     	$benefits->dental = $dental;
@@ -139,7 +139,7 @@ class UserController extends Controller
     	$benefits->relation_4 = $relation_4;
     	$benefits->save();
     	
-    	return view('user.index');
+    	return redirect('user');
     }
 
     public function getProfile() {
