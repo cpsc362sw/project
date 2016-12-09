@@ -6,8 +6,8 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading"><b>Administrative</b> Dashboard
-                        <i class="fa fa-angle-right" aria-hidden="true"></i> Timeclock
                         <i class="fa fa-angle-right" aria-hidden="true"></i> Audit
+                        <i class="fa fa-angle-right" aria-hidden="true"></i> Time Corrections
                     </div>
                     <div class="panel-body">
                         <p>Timeclock corrections for <b>{{ $user->name }}</b></p>
