@@ -49,7 +49,7 @@
                                         <tr style="line-height: 3em;">
                                             <td style="width:150px; font-weight:600;">
                                                 <i class="fa fa-circle-thin" aria-hidden="true" style="font-size: 50%;"></i>
-                                                &nbsp;&nbsp;                                      {{ ucwords(str_replace('_', ' ', $entryType[$i])) }}:
+                                                &nbsp;&nbsp;{{ ucwords(str_replace('_', ' ', $entryType[$i])) }}:
                                             </td>
                                             <td style="width:500px;">
                                                 <form method="post" action="{{ url('/user/timeclock/edit') }}">
@@ -64,7 +64,6 @@
                                             </td>
                                         </tr>
                                     @endfor
-
                                     <tr>
                                         <td style="width:250px;font-weight: 600;">Time Worked: {{ App\Timeclock::getTimeDiff($group) }}</td>
                                     </tr>
