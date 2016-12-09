@@ -99,11 +99,11 @@
                     <label class="large-title gray-border">Benefits &nbsp;&nbsp;<i class="fa fa-medkit" aria-hidden="true"></i></label>
 
                     <div class="benefits-list">
-                        <div class="gray-border benefits"><label>Health Ins.</label>{{ $benefits->health }}</div>
-                        <div class="gray-border benefits"><label>Vision Ins.</label>{{ $benefits->vision }}</div>
-                        <div class="gray-border benefits"><label>Dental Ins.</label>{{ $benefits->dental }}</div>
-                        <div class="gray-border benefits"><label>Life Ins.</label>{{ $benefits->life }}</div>
-                        <div class="gray-border benefits"><label>Retirement:</label>{{ $benefits->retirement }}</div>
+                        <div class="gray-border benefits"><label>Health Ins.</label>{{ @$benefits->health }}</div>
+                        <div class="gray-border benefits"><label>Vision Ins.</label>{{ @$benefits->vision }}</div>
+                        <div class="gray-border benefits"><label>Dental Ins.</label>{{ @$benefits->dental }}</div>
+                        <div class="gray-border benefits"><label>Life Ins.</label>{{ @$benefits->life }}</div>
+                        <div class="gray-border benefits"><label>Retirement:</label>{{ @$benefits->retirement }}</div>
                     </div>
 
                     <div class="button-wrap">
